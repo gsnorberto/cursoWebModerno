@@ -1,0 +1,29 @@
+Atribuição por valor
+Atribuição por referência
+
+Considere o exempo abaixo:
+const a = {name:"Teste"}
+const b = a
+b.name = "Opa" // nesse caso a constante "a" também sofre alteração do objeto
+
+A constante "a" não armazena o valor do objeto, mas o enderço no qual o objeto 
+está localizado
+
+
+Quando "b" recebe o valor de "a", ele está recebendo o mesmo enderço em que o "a" aponta, 
+ou seja, a constante "a" e a constante "b" apontam para o mesmo lugar na memória
+
+----------------------------------------
+
+Nesse outro exemplo a situação muda:
+let c = 3
+let d = c 
+d++
+
+Nesse exemplo acima, a cópia é feito por valor e não por referência, como no outro exemplo.
+Isso significa que o resultado de "c" continuará 3, enquanto o de "d" será 4
+
+-----------------------------------------
+
+Conclusão: Quando se trabalha com tipos primitivos a cópia é feita por valor. Já quando são 
+objetos, a cópia é feita por referência
