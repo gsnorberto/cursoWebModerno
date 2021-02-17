@@ -4,9 +4,8 @@ console.log(valores[4]) // posição não existente no array
 
 valores[4] = 10 // insere o valor 10 no índice 4
 valores[10] = 12 // insere o valor 12 no índice 10 - ficará com espaços vazios
-
 console.log(valores)
-console.log(valores.length) // diz a quantidade de elementos que o array possui
+console.log('Quantidade de elementos: ', valores.length) // diz a quantidade de elementos que o array possui
 
 // O Array é heterogêneo, ou seja, ele aceita valores de diferentes tipos. Embora não seja uma boa prática
 valores.push({id: 3}, false, null, 'teste') // função para adicionar novos elementos no array

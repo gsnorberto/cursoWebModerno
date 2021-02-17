@@ -14,6 +14,6 @@ console.log(soma(2, 3))
 const subtracao = (a,b) => a-b // Função com apenas uma linha não precisa de chaves
 console.log(subtracao(2,3))
 
-// Forma mais reduzina para funções com apenas um parâmetro
+// Forma mais reduzida para funções com apenas um parâmetro
 const imprimir2 = a => console.log (a)
 imprimir2('Legalll!!')

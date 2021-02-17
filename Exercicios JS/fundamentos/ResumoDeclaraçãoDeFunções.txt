@@ -1,0 +1,70 @@
+DECLARAÇÃO DE VARIÁVEIS
+    let var1  // Quando se usa "let" a variável pode ser declarada apenas uma vez
+    var var3 // Quando se usa "var" a mesma variável pode ser declarada mais de uma vez
+    const var4 // Valor da variável não pode sofrer alteração posteriormente
+
+UTILIZAÇÃO DE BOOLEAN
+    let array = false
+    console.log(!!var1) //saber se é false or true
+    console.log(var1 || 'Desconhecido') // Se var1 for false ele retorna 'Desconhecido'
+    console.log(!!('' || null || 0 || 'texto')) // 'texto' = true, então o resultado será true
+    console.log(('' || null || 0 || 'texto')) Tirando o "!!" ele irá retornar o primeiro valor verdadeiro que encontrar
+    
+UTILIZAÇÃO ARRAY 
+    const notas = [7.5, 7.2, 8.5]  //Criar
+    notas [4] = 9.5  //Adicionar valor em posição específica
+    notas.push(9.2, 5.5)  //Adicionar valores nas próximas posições
+    delete.notas[0] //Deletar valores
+    console.log(notas.lenght) // Tamanho do array
+    console.log(notas.pop) // Imprime e retira último elemento do array
+
+UTILIZAÇÃO DE FUNÇÕES
+    DECLARAÇÃO
+        function imprimirSoma(a,b){ //Sem retorno
+            console.log(a+b)
+        }
+
+        function soma(a,b = 0){ //Com retorno
+            return a+b
+        }
+
+        const imprimirSoma = function (a,b){ //Função armazenada em variável
+            console.log(a+b)
+        }
+
+        const soma = (a,b) => { //Forma mais reduzida de declaração 
+            return a+b
+        }
+
+        const subtracao = (a,b) => a-b //Forma mais reduzida de declaração 
+
+        const imprimir2 = a => console.log (a) // Forma mais reduzida para funções com apenas um parâmetro
+
+
+    CHAMADA
+        imprimirSoma(2,3) //chamada de função sem retorno
+        console.log(soma(2,3)) //chamada de função cem retorno
+
+UTILIZAÇÃO DE OBJETOS
+    const produto1 = {}
+    produto1.nome = 'Celular Ultra Mega'
+    produto1.preco = '4998.90'
+    produto1['Desconto Legal'] = 0.40 // Outra forma de declarar objetos
+
+    const produto2 = {
+        nome: 'Camisa Polo',
+        preco: 79.90
+    }
+
+OPERADOR DESTRUCTURING
+    // Destructuring para objetos
+        const { nome, idade } = pessoa 
+        const { nome: n, idade: i } = pessoa
+        
+    // Destructuring para Arrays
+        const [a] = [10]
+        const [n1, n2, n3, n4] = [10, 7, 9, 8]
+
+
+
+
