@@ -6,9 +6,9 @@ const sequencia = {
     que essa é uma variável que é pretendida ser acessada apenas
     internamente dentro do objeto sequência*/
     get valor() {return this._valor++}, //Retorna o valor
-    set valor(valor) { //Altera o valor
-        if(valor > this._valor){
-            this._valor = valor /**Atribuir o valor que
+    set valor(value) { //Altera o valor
+        if(value > this._valor){
+            this._valor = value /**Atribuir o valor que
             recebeu como parâmetro para o valor de this._valor*/
         }
     } 

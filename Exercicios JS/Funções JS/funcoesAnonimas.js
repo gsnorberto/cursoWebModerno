@@ -5,9 +5,9 @@ const soma = function (x, y){ // função que não tem nome.
     return x+y
 }
 
-const imprimirResultado = function (a, b, operacao = soma){ /**se
-    operacao não tiver nenhum valor passado por parâmetro ele assume
-    o valor de soma */
+const imprimirResultado = function (a, b, operacao = soma){ /**se 
+    "operacao" não assumir nenhuma função passada por parâmetro, 
+    ele assume a função soma */
     console.log(operacao(a, b))
 }
 

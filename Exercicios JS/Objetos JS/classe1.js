@@ -17,7 +17,7 @@ class CicloFinanceiro{
     }
     
     addLancamentos(...lancamentos){ /** concatena todos os parâmetros
-        em um array */
+        no array "lancamentos" */
         //console.log(this.lancamentos)
         lancamentos.forEach(l => {
             this.lancamentos.push(l) /**Adicionando os parâmetros no
@@ -29,11 +29,11 @@ class CicloFinanceiro{
     }
 
     sumario(){
-            let valorConsolidado = 0
-            this.lancamentos.forEach(l => {
-                valorConsolidado += l.valor
-            })
-            return valorConsolidado
+        let valorConsolidado = 0
+        this.lancamentos.forEach(l => {
+            valorConsolidado += l.valor
+        })
+        return valorConsolidado
     }
 }
 

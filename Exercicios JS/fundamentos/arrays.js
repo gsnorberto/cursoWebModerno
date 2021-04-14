@@ -1,4 +1,5 @@
 const valores = [7.7, 8.9, 9.2, 6.3]
+console.log(valores)
 console.log(valores[0], valores [3])
 console.log(valores[4]) // posição não existente no array
 
@@ -9,7 +10,7 @@ console.log('Quantidade de elementos: ', valores.length) // diz a quantidade de 
 
 // O Array é heterogêneo, ou seja, ele aceita valores de diferentes tipos. Embora não seja uma boa prática
 valores.push({id: 3}, false, null, 'teste') // função para adicionar novos elementos no array
-console.log(valores)
+console.log('Valores: ' + valores)
 
 // Formas de excuir elementos do Array
 console.log(valores.pop()) // Imprime e Retira o último valor do array

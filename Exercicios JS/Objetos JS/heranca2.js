@@ -6,6 +6,7 @@ const filho = {__proto__: pai, attr3: 'C'} // Filho tem como protótipo o pai
 console.log(filho.attr1) //vai encontrar attr1 normalmente 
 console.log(filho.attr0) //undefined
 
+
 /** EXEMPLO 2 ----------------------------------------------- */
 
 const carro = {

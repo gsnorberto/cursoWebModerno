@@ -1,7 +1,7 @@
 /*Acesse o site: https://imasters.com.br/javascript/javascript-entendendo-o-de-uma-vez-por-todas
 para mais informações sobre this e bind*/
 
-//const saudacao = 'bom dia 2'
+const saudacao = 'bom dia 2'
 const pessoa = {
     saudacao: 'Bom dia!!!',
     falar() {

@@ -18,7 +18,7 @@ console.log(produto)
 /** Não consegue Adicionar nem excluir valores do objeto, apenas alterar */
 const pessoa = {nome: 'Juliana', idade: 35}
 Object.seal(pessoa)
-console.log('Selado', Object.isSealed(peesoa))
+console.log('Selado', Object.isSealed(pessoa))
 delete pessoa.nome
 pessoa.idade = 29
 console.log(pessoa)

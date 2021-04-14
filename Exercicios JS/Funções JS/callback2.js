@@ -1,4 +1,4 @@
-//Comarando uma função com e sem o uso de callback
+//Comparando uma função com e sem o uso de callback
 
 const notas = [7.7, 6.5, 5.2, 8.9, 3.6, 7.1, 9.0]
 

@@ -34,3 +34,4 @@ carro['proprietario']['endereco']['logradouro'] = 'avenida gigante'
 console.log(carro)
 
 delete carro.condutores
+//console.log(carro)

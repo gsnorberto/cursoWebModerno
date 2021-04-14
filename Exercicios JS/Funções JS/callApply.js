@@ -11,9 +11,9 @@ const produto = {
 
 globalThis.preco = 20
 globalThis.desc = 0.1 // 10% de desconto
-console.log(getPreco())
+console.log(getPreco()) //18
 
-console.log(produto.getPreco())
+console.log(produto.getPreco()) //3900.65
 
 //Usando call e apply
 /** A diferença entre o call e o apply está apenas na forma
@@ -22,8 +22,8 @@ console.log(produto.getPreco())
  */
 const carro = {preco: 4000, desc: 0.20}
 
-console.log(getPreco.call(carro))
-console.log(getPreco.apply(carro))
+console.log(getPreco.call(carro)) //3200
+console.log(getPreco.apply(carro)) //3200
 
-console.log(getPreco.call(carro, 0.17, '$'))
-console.log(getPreco.apply(carro, [0.17, '$']))
+console.log(getPreco.call(carro, 0.17, '$')) //3744
+console.log(getPreco.apply(carro, [0.17, '$'])) //3744

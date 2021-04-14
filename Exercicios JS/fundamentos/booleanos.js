@@ -35,7 +35,7 @@ console.log('para finalizar...')
 // se encontrar um único valor verdadeiro, ele vai retornar "true"
 console.log(!!('' || null || 0 || 'texto')) // 'texto' = true, então o resultado será true
 // Tirando o "!!" ele irá retornar o primeiro valor verdadeiro que encontrar
-console.log(('' || null || 0 || 'texto'))
+console.log('' || null || 0 || 'texto')
 
 let nome = ''
 // nessa expressão, caso o nome seja "false" ele retornará o primeiro true que encontrar

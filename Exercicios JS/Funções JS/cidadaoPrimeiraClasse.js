@@ -11,10 +11,12 @@ const fun2 = function (){
 }
 
 //Função em um array-----------------------------------
-const array = [function (a,b) {return a+b}, fun1, fun2]
+console.log('Função em um Array:')
+const array = [function (a,b) {return a+b}, fun1, fun2] //Fun1 e Fun2 sem utilização
 console.log(array[0](2,3))
 
 // Função em um objeto---------------------------------
+console.log('Função em um Objeto:')
 const obj = {}
 obj.falar = function () {return 'Opaaa'}
 console.log(obj.falar())

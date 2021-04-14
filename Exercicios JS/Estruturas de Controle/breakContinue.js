@@ -3,14 +3,17 @@
 
 const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
+console.log('\nFOR 1: ')
 for(x in nums){
     if(x == 5){
-        break // Age sobre o bloco for
+        break /** Age sobre o bloco for, parando sua execução quando a
+        condição do if for satisfeita*/ 
     }
 
     console.log(`${x} = ${nums[x]}`)
 }
 
+console.log('\nFOR 2: ')
 for (y in nums){
     if (y == 5){
         continue //Interrompe a repetição atual e vai para próxima repetição

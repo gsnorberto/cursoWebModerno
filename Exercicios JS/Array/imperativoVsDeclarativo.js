@@ -18,7 +18,7 @@ console.log(total1/alunos.length)
  * muito em como é o procedimento interno das funções utilizadas,
  * como o "map", por exemplo
  */
-const getNota = nota => alunos.nota
+const getNota = alunos => alunos.nota
 const soma = (total, atual) => total + atual
 const total2 = alunos.map(getNota).reduce(soma)
 console.log(total2/alunos.length)

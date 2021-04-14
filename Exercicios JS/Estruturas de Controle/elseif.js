@@ -1,9 +1,9 @@
 Number.prototype.entre = function(inicio, fim){
-    return this >= inicio && this <= fim
+    return this >= inicio && this <= fim // return true or false
 }
 
 const imprimirResultado = function (nota){
-    if (nota.entre(9, 10)){
+    if (nota.entre(9, 10)){ //A função "entre" será true ou false
         console.log('Quadro de Honra')
     }else if(nota.entre(7, 8.99)){
         console.log('Aprovado')
@@ -18,5 +18,5 @@ const imprimirResultado = function (nota){
     console.log('FIM!!!\n')
 }
 
-imprimirResultado(10)
+imprimirResultado(10) //Nesse caso, o valor 10 é o "this" da function "entre"
 imprimirResultado(-2)
