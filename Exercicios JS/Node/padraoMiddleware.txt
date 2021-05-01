@@ -1,0 +1,17 @@
+PADRÃO MIDDLEWARE OU CHAIN OF RESPONSIBILITY
+
+-O framework Exepress é fotemente baseado nesse padrão
+-É um padrão muito presente no desenvolvimento web como um todo
+-No NodeJs também é muito presente esse padrão
+
+1 POSSIBILIDADE: Quando você tem uma função com vários passos dentro dela , para fazer um processo com a mesma lógica a única solução seria replicando toda a função, o que nem sempre seria o ideal.
+    (Func(passo1, passo2, passo3))
+
+2 POSSIBILIDADE: Você separa cada passo da função. Nesse caso ainda há um acoplamento, pois o Passo A sempre chama o Passo B que também chama o Passo C. 
+    funcPasso1 -> funcPasso2 -> funcPasso3
+
+3 POSSIBILIDADE (MIDDLEWARE): Não há mais o acoplamento entre as funções, o que você tem é uma função next que conhece quem é o próximo elemento (MIDDLEWARE) da cadeia. Nesse caso você chama o next só quando e se precisar (podendo a cadeia ser interrompida quando necessário, excluindo o next do Middlware), não tendo mais ordem dos passos. Requisição e Resposta são os dados de entrada (pode ser um cliente, produto, ou alguma coisa do tipo).
+    MiddlwareA -> MiddlwareB -> MiddlwareC
+    MiddlwareC -> MiddlwareA -> MiddlwareB
+    (Não há sequência fixa) 
+    Olhar imagem para melhor compreensão

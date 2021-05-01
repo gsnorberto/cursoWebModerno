@@ -1,0 +1,24 @@
+Dentro da pasta contendo o package.json é possível recriar a pasta node_module através
+do comando "npm i". Dentro da pasta node_module ele automaticamente já instala o axios
+e suas dependências junto com "follow redirects" o ambos presentes como dependências 
+no "package-lock.json
+
+Nesse exemplo, o package.json vai ter como arquivo principal o "funcionarios.js" e não
+o "index" que vem por padrão.
+
+Foi criado dois scripts: start, dev
+
+Automaticamente, quando o dev disparar o nodemon ele irá ficar monitorando o arquivo
+sempre que houver uma mudança ele executa novamente o arquivo. Só que nesse caso ele
+vai usar o arquivo principal "funcionarios.js" pra chamar ele
+
+Uma vez definido os scripts dentro do package.json, uma forma de startar seu projeto
+é usando o comando "npm nomeDoScript" (o comando deve ser digitado dentro do diretório
+onde se encontra o package.json. No exemplo será a partir da pasta funcionarios).
+Nesse exemplo será: npm start.
+Nesse exemplo, ele irá startar o projeto funcionarios.js. Sempre que você fizer qualquer
+alteração (com nodemon startado) dentro de funcionarios.js e salvar, automaticamente 
+o nodemon irá disparar e executar o código atualizado
+
+Para executar scripts criados dentro de package.json o comando é: npm run nomeDoScript
+Caso sejam scripts previamente definidos (exemplo: start), o comando é: npm nomeDoScript

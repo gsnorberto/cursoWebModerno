@@ -1,0 +1,18 @@
+Package.json - Serve para descrever seu projeto e tem como um dos grandes 
+objetivos é ter a descrição de todas as dependências que o projeto precisa.
+Para criar o arquivo Package.json digite o comando: "npm init -y". Também 
+pode através do comando "npm init" mas terá que responder todas as perguntas.
+
+Como um exemplo, dentro da pasta "funcionarios" criamos uma dependência 
+chamada axios através do seguinte comando: "npm i --save axios". Depois
+de instalado, ele adiciona o axios em uma área de dependências do arquivo
+Package.json.
+Observe que sempre que é instalado uma dependência através do comando "npm i"
+ele criará uma pasta node_modules na mesma pasta que você está digitando o 
+comando
+
+Package-lock-json = serve para definir exatamente qual foi a versão que você
+baixou. Mostra o caminho e a versão exata que você baixou para que quando você
+for reinstalar os pacotes você tenha a garantia de fato que você está instalando
+aquilo que você testou na primeira vez que você instalou. Ou seja, é uma forma
+de reforçar a instalação correta dos pacotes

@@ -1,0 +1,13 @@
+- Foi iniciado a pasta projeto com o packet json através do comando: npm init -y
+
+- Foi feito a instalação do Express através do comando: npm i --save express@4.16.2 -E ("--save" = salvar a referência do Express dentro do arquvivo Package.json . "@4.16.2" = versão específica que quer instalar. "-E" = Versão exata que quer instalar). Nesse momento é instalada a pasta "node_modules" e a "package.json"
+
+- Foi criada a pasta src: pasta do código fonte
+
+- Instalado o nodemon com o seguinte comando: npm i --save-dev nodemon@1.14.11 -E . Nesse caso o nodemon através do "-dev" estará presente apenas nas dependências do desenvolvimento porque ele não é usado na prática em produção.
+
+- Apartir de então, toda vez que chamar o comando "npm start" dentro do terminal no diretório "Projeto" ele vai executar o nomdemon com "servidor.js" definido no package.json
+
+- Para acessar, abra o programa postman e digite a url: http://localhost:3003/produtos 
+
+- Usado o comando: "npm i --save body-parser@1.18.2 -E" para o exemplo da requisição ao banco de dados. Body Parser significa "analisador do corpo", ele vai exatamente desempenhar essa função de analisar os dados enviados pelo usuário e entregar  esses dados corretamente para serem usados no lado do servidor. Em outras palavras, o lado do servidor vai analisar os dados que vieram do body cliente e transformá-los em objeto para que o lado servidor possa acessar a partir de req.body.atributo

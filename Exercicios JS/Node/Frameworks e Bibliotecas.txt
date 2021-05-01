@@ -1,0 +1,18 @@
+BIBLIOTECA é uma coleção de códigos/funções com objetivo de te ajudar a resolver algum tipo de problema dentro do seu projeto. Exemplo de biblioteca: React (apesar de alguns acharem que ele é um framework), pois ele é composto de funções para criação de componentes e estados, e através dele podemos decidir qual será a estrutura da aplicação e o fluxo com o qual ele funciona.
+
+FRAMEWORK geralmente possui uma estrutura ou fluxo de trabalho a ser seguido. Um framework pode ser feito a partir de uma coleção de padrões, APIs e até mesmo de bibliotecas. Exemplo de framework: Angular(apesar de alguns acharem que ele é uma biblioteca), pois ele já inclui funcionalidades prontas para uso. Nele já há uma estrutura a ser seguida, o Angular é que vai chamar nosso código seguindo seu próprio fluxo.
+
+Qual diferença entre framework e biblioteca e qual é o melhor a ser usado?
+- Enquanto na biblioteca, nós mesmos criamos a base e o fluxo, no framework temos toda estrutura pronta para utilizarmos e seguirmos. Em outras palavras, é como se a biblioteca fosse feita para ser utilizada pelo nosso código, enquanto o framework utiliza nosso código para fazer executar sua estrutura já estabelecida. 
+Quanto as vantagens de desvantagens, o framework nos dá uma estrutura toda pronta, poupando nosso trabalho. Em contra partida, o mesmo faz com que tenhamos menos liberdade para certas escolhas. Já na biblioteca temos que definir sua arquitetura e fluxo (o que torna o processo mais lento do que o framework), mas também temos mais liberdade de escolher cada biblioteca responsável por cada funcionalidade em nossa aplicação.
+
+Existem frameworks front-end (que trabalham com a parte gráfica do projeto que tem interação direta com o cliente) e back-end (que ajudam, por exemplo, a mapear o banco de dados que vai ajudar a persistir os dados no banco de dados )
+
+Exemplos de bibliotecas JS:
+    - React, voca, chart.js, moment.js, mo.js
+
+Exemplos de framework JS - Frontend:
+    -Angular, vue.js, Ionic, LoolBack
+
+Exemplos de framework JS - Backend
+    -Exepress(para o node), sails.js(para node), koa
