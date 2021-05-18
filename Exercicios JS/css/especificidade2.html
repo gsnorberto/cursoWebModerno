@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Especificidade CSS</title>
+    <style>
+        /*CALULADORA DE PRIORIDADE: https://specificity.keegan.st/ */
+
+        /* ORDEM DE PRIORIDADE
+            1. Inline
+            2. ID
+            3. Classe, Pseudo-classe, atributo
+            4. Elemento, Pseudo-Elementos
+        */
+        body{font-size: 40px;}
+        div{background-color: #00b; color: #fff;}
+        div[wm-cor]{background-color: darkorange;} /*Nível de prioridade é maior*/
+        div:hover{background-color: purple;} /*Tem mesmo nível de prioridade do elemento acima, porém, como está por último, a regra foi aplicada*/
+        div.estilo{background-color: green;}/*Mesmo nível de prioridade do que as duas linhas acima*/
+        #unico1, #unico2{background-color: #000;}
+    </style>
+</head>
+
+<body>
+    <div id="unico1" class="estilo" style="background-color: red;"> <!-- Inline tem prioridade sobre todos-->
+        #unico1 vs .estilo vs inline
+    </div>
+    <div id="unico2" class="estilo">#unico2 vs .estilo</div>
+    <div class="estilo" wm-cor>.estilo vs wm-cor</div>
+    <div wm-cor>wm-cor</div>
+    <div class="estilo">.estilo</div>
+    <div>elemento</div>
+</body>
+
+</html>

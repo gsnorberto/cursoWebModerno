@@ -1,0 +1,23 @@
+span{
+    font-size: 30;
+}
+
+/* Classe CSS - Começa com o ponto "." */
+.fundoVermelho{
+    background-color: blue;
+    /* background-color: #000; */
+    /* background-color: #000000; */
+    /* background-color: rgb(255,0,0); */
+}
+.negrito{
+    font-weight: bold;
+}
+
+/* ID CSS */
+#textoPrincipal{
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #444;
+    padding: 10px; /* Espaçamento*/
+}

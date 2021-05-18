@@ -5,7 +5,7 @@ console.log(Object.entries(obj)) // [ [ 'a', 1 ], [ 'b', 2 ], [ 'c', 3 ] ] -> co
 
 // Melhorias na Nortação Literal
 const nome = 'Carla'
-const pessoa= {
+const pessoa = {
     nome, // Não precisa mais colocar nome: nome
     plan(){
         return 'Oi gente'

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #02</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        div{
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+        }
+
+        .flex-container div{
+            box-sizing: border-box;
+        }
+
+        .flex-container{
+            display: flex;
+            height: 300px;
+            width: 600px;
+        }
+
+        .flex-container div:nth-child(3){ /*pegar o terceiro elemento div do flex-container*/
+            background-color: indianred;
+            order: 1; /*Os elementos que possuem uma ordem maior vão sendo mostrados por último. A ordem padrão dos elementos é zero*/
+            align-self: center; /*O elemento fica no centro verticalmente. Flex-end, flex-start para fim e início*/
+            align-self: stretch; /*volta para o padrão default*/
+        }
+
+        .flex-container div{
+            width: 100px;
+            flex-grow: 0;
+            flex-grow: 1; /*Todos crescem de uma forma igual para ocupar todo espaço da caixa*/
+        }
+
+        .flex-container div:nth-child(1){
+            flex-grow: 2; /*A div 1 vai crescer mais do que os outros porque seu peso é maior*/
+        }
+
+        .flex-container{
+            width: 300px;
+            flex-shrink: 1; /*Todos vão encolher de forma equivalente*/
+        }
+
+        .flex-container div:nth-child(1){
+            flex-shrink: 5; /*A div 1 vai encolher mais do que os outros*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel">3</div>
+        <div class="tag nolabel">4</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

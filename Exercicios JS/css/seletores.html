@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Selectors</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        /* Seletor Universal */
+        /* *{
+            color:darkgoldenrod;
+            background-color: darkorchid;
+        } */
+
+        /* Classe */
+        /* .tag{
+            color:darkgoldenrod;
+            background-color: darkorchid;
+        } */
+
+        /*ID */
+        /* #aprovados{
+            color:darkgoldenrod;
+            background-color: darkorchid;
+        } */
+
+        /* Acesso a filho direto - nesse caso, pega o elemento div diretamente associado ao div com id "aninhado". OBS: Se colocasse "aninhado > section" não iria funcionar, pois o elemento filho deve estar associado diretamente com o pai*/
+        /* #aninhado > div {
+            color:darkgoldenrod;
+            background-color: darkorchid;
+        } */
+
+        /* Descentente */
+        /* #aninhado section {
+            color:darkgoldenrod;
+            background-color: darkorchid;
+        } */
+
+        /*Adjascente - Irmãos*/
+        /* p + ul {
+            color:darkgoldenrod;
+            background-color: darkorchid;
+        } */
+
+        /*Geral - Irmãos*/
+        /* p ~ ol {
+            color:darkgoldenrod;
+            background-color: darkorchid;
+        } */
+
+        /*Atributo - todos os elementos com propriedade chamada "feira" */
+        /* [feira]{
+            color:darkgoldenrod;
+            background-color: darkorchid;
+        } */
+
+        /* Quando o atributo "feira" tiver o valor "casa" */
+        /* [feira~=escritorio] - todos cujo no valor tenha o nome escritório. Ex: escritorio empresa*/
+        /* [feira*=sa] - todos cujo no valor tenha o "sa" fazendo parte do valor. Ex: empresa, casa*/
+        /* [feira=casa]{
+            color:darkgoldenrod;
+            background-color: darkorchid;
+        } */
+
+        /*Primeiro filho de alguém que é do tipo Span*/
+        /* span:nth-child(1){
+            color:darkgoldenrod;
+            background-color: darkorchid;
+        } */
+
+        /* Dentro de uma tag, selecionar os filhos ímpares(odd) ou pares(even) */
+        /* section > :nth-child(odd){
+            color:darkgoldenrod;
+            background-color: darkorchid;
+        } */
+
+        /* Segundo elemento do tipo span dentro de uma section */
+        section > span:nth-of-type(2){
+            color:darkgoldenrod;
+            background-color: darkorchid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='tag'>
+        <div class='tag'>
+            <p class='tag'>1</p>
+            <ul class='tag' feira='casa'>
+                <li>Arroz</li>
+                <li>Feijão</li>
+            </ul>
+            <ul class='tag' feira='escritorio empresa'>
+                <li>Café</li>
+                <li>Água</li>
+            </ul>
+            <ol id='aprovados' class='tag'>
+                <li>Maria</li>
+                <li>Pedro</li>
+                <li>Ana</li>
+            </ol>
+            <div id='aninhado' class='tag'>
+                <div class="tag">
+                    <section class='tag nolabel'>
+                        <span class='tag'>1</span>
+                        <p class='tag'>2</p>
+                        <span class='tag'>3</span>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

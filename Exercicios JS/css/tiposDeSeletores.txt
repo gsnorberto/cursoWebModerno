@@ -1,0 +1,23 @@
+* = Aplicar uma propriedade a todos os elementos
+
+ELEM = seleciona o próprio elemento. Ex: h1, div, p, etc...
+
+div, p = vai aplicar na div e no p
+
+.class = usar classe para determinados elementos
+
+#id = identificação de um elemento exclusivo dentro de uma página
+
+[ATRIB] =
+
+:pseudo-class = 
+
+::pseudo-elemento = primeira letra, primeira linha, etc..
+
+DIV + P = adjacent sibling = irmãos adjascentes, um seguido do outro
+
+DIV ~ p = general sibling = irmãos dentro de um mesmo pai, mas não necessariamente estão um do lado do outro
+
+DIV > p = child -> acessar filho direto (primeira tag filho dentro da tag pai)
+
+DIV P = descendant -> qualquer elemento que seja descendente. Ou seja, todas as tags que se encontram dentro dessa tag

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Texto</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <style>
+        /* ... */
+        * {
+            margin: 0;
+        }
+
+        html{
+            font-size: 28px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        div{
+            font-size: 50px;
+        }
+
+        p{
+            /*Valores padrões*/
+            font-size: 1em;
+            font-size: 100%;
+            font-size: 16px; /*Tamanho padrão no Browser*/
+            font-size: 12pt;
+
+            /*Unidades absolutas*/
+            font-size: 100px; /*O tamanho do pixel é relativo. Depende da densidade do seu monitor*/
+            font-size: 72pt; /*pontos*/
+            font-size: 1 in; /*polegada*/
+
+            /*Unidades relativas*/
+            font-size: 2.2em; /*Pega o tamanho da fonte padrão do browser (16px) ou referência de fonte mais próxima (que está na tag div, nesse exemplo) e multiplica por 2.2. Nesse caso, 50 x 2,2 = 110*/
+            font-size: 2.2rem; /*vai pegar 2.2x a referência padrão de fonte do html (16px). Ou a fonte raiz definida na tag html. Nesse caso: 28 x 2,2 = 61,6*/
+            font-size: 50vh; /* 50/100 da altura*/
+            font-size: 10vw; /* 10/100 da largura*/
+
+            /*Família de fontes*/
+            font-family: monospace; /*Monoespaçada*/
+            font-family: Georgia, serif; /*Serifadas*/
+            font-family: 'Verdana, sans-serif'; /*Fontes não serifadas*/
+            font-size: 'Indie Flower', cursive; /*Fonte referenciada do link*/
+
+            /*Algumas propriedades das fontes*/
+            font-weight: 900; /*Quanto maior, mais fica com aspecto de negrito*/
+            font-style: italic;
+            text-transform: uppercase; /*Coloca todas as letras maiúsculas*/
+            /* text-decoration: overline underline ; */
+            word-spacing: -10px;
+            letter-spacing: 20px;
+            line-height: 2.5em;
+            text-align: center;
+        }
+
+        .botao{
+            font-size: 50px;
+            text-decoration: none; /*Remover linha do link*/
+            padding: 10px 30px;
+            border-radius: 25px; /*Arredondar botão*/
+        }
+
+        .botao:hover{ /*Altera a cor do botão quando o usuário passa o cursor sobre ele*/
+            background: red;
+        }
+
+        /*Visual do botão*/
+        .destaque{ 
+            color: #fff;
+            background: tomato;
+            box-shadow: 2px 2px 1px 1px #000;
+        }
+
+        /*Efeito de Click. Faz com que quando você clica no botão ele ative essa classe, que tem a função de tirar o efeito de sombra para dar uma sensação de click*/
+        .destaque:active{ /*active é uma pseudo classe que identifica quando o botão é acionado e ativa essa função*/
+            box-shadow: none;
+        }        
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>
+            Que texto
+            <br>legal!!!
+        </p>
+    </div>
+    <a href="http://google.com" class="botao destaque">Google</a>
+</body>
+
+</html>

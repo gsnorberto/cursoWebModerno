@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #01</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        div{
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+            margin: 5px;
+        }
+
+        .big{
+            font-size: 1.5em;
+        }
+
+        .flex-container{
+            display: flex; /*Essa clsse passa a ser o Flex Container*/
+            flex-direction: column; /*Main Axis passa a ser o eixo da coluna*/
+            flex-direction: row-reverse; /*Inverte a ordem dos elementos no formato linha. "column-reverse" inverte no formato coluna*/
+            flex-direction: row; /*Voltar para propriedade padrão.*/
+            width: 50%;
+            height: 200px;
+            flex-wrap: wrap; /*Ele respeita as dimensões. Se a largura não for o suficiente ele dá uma quebra de linha*/
+            flex-wrap: wrap-reverse; /*A linha de cima vai para baixo e a de baixo vai para cima */
+            flex-flow: row wrap;
+            flex-flow: column-reverse wrap; /*Fica em coluna reversa e qubra a coluna em vários pedaços para ocupar o espaço inteiro*/
+            flex-flow: row wrap;
+
+            /*Main Axis*/
+            justify-content: flex start; /*Justificar os elementos a partir do flex-star*/
+            justify-content: flex-end;
+            justify-content: center; /*Centralizar os itens*/
+            justify-content: space-around; /*Espaço entre os elementos para que eles fiquem distribuídos de forma uniforme na largura inteira do container*/
+            flex-direction: row-reverse;
+            justify-content: space-between;
+
+            /*Cross Axis*/
+            height: 400px;
+            align-items: stretch; /*Restaurar formato padrão*/
+            align-items: baseline; /*Alinha os elementos em uma mesma espécie de linha */
+            align-items: flex-start; /*Alinha os elementos de acordo a linha superior*/
+            align-items: flex-end; /*Alinha os elementos de acordo a linha inferior*/
+            align-items: center;
+
+            /*Mais de uma linha*/
+            align-content: flex-start;
+            align-content: flex-end;
+            align-content: center;
+            align-content: space-around;
+            align-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel big">3</div>
+        <div class="tag nolabel">4</div>
+        <div class="tag nolabel">5</div>
+        <div class="tag nolabel">6</div>
+        <div class="tag nolabel">7</div>
+        <div class="tag nolabel">8</div>
+        <div class="tag nolabel">9</div>
+        <div class="tag nolabel">10</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

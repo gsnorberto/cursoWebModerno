@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Altura e Largura</title>
+    <style>
+        html{
+            height: 100%;
+        }
+        body {
+            font-size: 40px;
+            background-color: coral;
+            height: 100%;
+        }
+
+        div {
+            background-color: seagreen;
+        }
+
+        span {
+            background-color: dodgerblue;
+        }
+
+        /*Span é display inline, então ele desconsidera altura e largura*/
+        span, div{
+            width: 50%;
+            height: 250px; /*vai funcionar, pois usa unidade absoluta*/
+            height: 50%; /*Não vai fazer efeito nenhum. Para fazer efeito, há necessidade de criar uma propriedade html com height de 100%. O body também precisa estar com height em 100%*/
+        }
+    </style>
+</head>
+
+<body>
+    <div>Título</div>
+    <span>Subtítulo</span>
+</body>
+
+</html>

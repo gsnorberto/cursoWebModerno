@@ -8,6 +8,7 @@ function real(partes, ...valores){
         valor = isNaN(valor) ? valor : `R$${valor.toFixed(2)}` // se for um número retorna o R$ com o número
         resultado.push(partes[indice], valor)
     })
+    console.log(resultado) // [ '1x de ', 'R$29.90', ' ou 3x de ', 'R$11.00' ]
     return resultado.join('') //Junta todos os elementos de um array em uma string
 }
 

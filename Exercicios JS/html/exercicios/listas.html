@@ -1,0 +1,64 @@
+<h1>Listas</h1>
+
+<!-- Listas Ordenadas -->
+<h2>Aprovados</h2>
+<ol>
+    <li>Bia</li>
+    <li>Pedro</li>
+    <li>Ana</li>
+    <li>João</li>
+</ol>
+
+<!-- Listas não ordenada e aninhadas -->
+<ul class="tree">
+    <li>Queijo</li>
+    <li>Leite</li>
+    <li>Arroz</li>
+    <span wm-folder>backend</span>
+    <li> Feijão
+        <ul>
+            <li>
+                <span wm-folder>Pão</span>
+                <ul>
+                    <li>Café</li>
+                    <li>Macarrão</li>
+                    <li>Purê</li>
+                    <li>Pão</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li> Feijão
+        <ul>
+            <li>
+                <span wm-folder>Panetone</span>
+                <ul>
+                    <li>Café</li>
+                    <li>Macarrão</li>
+                    <li>Purê</li>
+                    <li>Pão</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<!-- Mudar estilo da lista acima usando css -->
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<script> // JavaScript para sistema de pastas
+    document.querySelectorAll('[wm-folder]').forEach(folder =>{
+        folder.onclick = function(e){
+            const ul = folder.previousElementSibling // Pega o próximo "ul" depois de cada "span"
+            const d = ul.style.display //Display atual da "ul"
+            ul.style.display = d === 'none' ? 'block' : 'none' // Se display for visível ele vai ficar invisível, e se for invisível vai ficar visível
+        }
+    })
+</script>
+
+<!-- Lista de Definição -->
+<h2>Principais termos do glossário de Cloud Computing</h2>
+<dl>
+    <dt>Baas</dt>
+    <dd>Backend como Serviço</dd>
+    <dt>Iaas</dt>
+    <dd>Infraestrutura como Serviço</dd>
+</dl>

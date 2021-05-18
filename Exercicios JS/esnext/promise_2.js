@@ -15,6 +15,6 @@ function esperarPor(tempo = 2000){
     })
 }
 
-esperarPor() // espera 2 segundos para executar
-    .then(()=>esperarPor()) // espera 2 segundos para executar
+esperarPor(4000) // espera 4 segundos para executar
+    .then(()=>esperarPor(6000)) // espera 6 segundos para executar
     .then(esperarPor) // espera 2 segundos para executar

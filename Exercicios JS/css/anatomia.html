@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anatomia CSS</title>
+    <style>
+        .selector{
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+            border: solid 5px navy;
+            font-family: Arial, Helvetica, sans-serif; /*Se a primeira fonte der erro, vai para segundo. E assim sucessivamente*/
+            width: calc(100% - 10px); /*tamanho da borda 100% menos 10 pixels*/
+            background-color: rgb(34, 153, 189);
+        }
+
+        /* Usando uma pseudo-classe - Aplica um estilo quando tederminado estado acontece. Eles criam classes para representar quando, por exemplo, você passa o mouse por cima do seu componente*/
+        .selector:hover{ /*Quando o mouse do usuário passar por cima do componente*/
+            background-color: orangered;
+        }
+
+        /*Usando um pseudo-elemento*/
+        .selector::first-letter{
+            font-size: 60px;
+            font-weight: bold;
+        }
+
+        /*Padrões de nomenclatura*/
+        /*dash-case ou camelCase. No curso será mais usado o dash-case*/
+    </style>
+</head>
+
+<body>
+    <div class="selector">Conteúdo</div>
+</body>
+
+</html>

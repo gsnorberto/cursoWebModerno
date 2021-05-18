@@ -1,0 +1,63 @@
+<table>
+    <caption>Produtos</caption>
+    <!--Utilize <div> apenas para fins não semânticos. Para fins semânticos sempre prefira as sections com thead, tbody, etc...-->
+    <thead> <!-- Não é obrigatório usar essa tag. Mas é interessante para fins de semântica do código. Área para cabeçalho da tabela-->
+        <tr> <!-- Table Row - Linha -->
+            <th>Produto</th> <!--Table head-->
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>iPad</td>
+            <td>3289,00</td>
+            <td>5</td>
+            <td>1645,00</td>
+        </tr>
+        <tr>
+            <td>Samsung</td>
+            <td>3289,00</td>
+            <td>5</td>
+            <td>1645,00</td>
+        </tr>
+        <tr>
+            <td>WatchApple</td>
+            <td>3289,00</td>
+            <td>5</td>
+            <td>1645,00</td>
+        </tr>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3" rowspan="2"> Total </td> <!-- Ocupar 3 colunas -->
+            <td>37637,00</td>
+        </tr>
+        <tr>
+            <td>Teste</td>
+        </tr>
+    </tfoot>
+</table>
+
+<style>
+    table{
+        border-collapse: collapse; /*Tirar bordas da tabela*/
+    }
+    th, td {
+        padding: 10px; /* Espaçamento da tabela*/
+    }
+    thead tr{
+        border-bottom: solid 3px #444;
+    }
+    tbody tr:hover{ /*Quando o click do mouse passar por cima*/
+        background-color: #dedede;
+    }
+    tfoot{
+        background-color: #444;
+        color: #fff;
+        font-weight: bold;
+    }
+</style>

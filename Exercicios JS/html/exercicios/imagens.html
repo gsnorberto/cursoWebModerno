@@ -1,0 +1,111 @@
+<!--NOTA: Para ver o movimento da imagem deve acessar pelo link: localhost:5500/html/exercicios/imagens.html-->
+<div wm-slider>
+    <p>
+        <!-- alt = se a imagem não carregar, aparece a frase -->
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg"
+            alt="Muro da cidade" 
+            width="513" height="342"
+            title="Muro da Cidade por Tarso Bessa">
+    </p>
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif"
+            alt="Intro Cod3r" height="342">
+    </p>
+    
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png"
+            alt="Rio de Janeiro"
+            height="342">
+    </p>
+    
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg"
+        alt="Avatar"
+        height="50"
+        align = "left"> <!-- Alinha a imagem à esquerda do texto-->
+        
+        sadçfl kaçsld kj çalskdf jç asçldkf js ksjçdlf kjs çalskjdfçlksjd sfhsofih j,smdfnqopeij askdjlfhei ush leury n laksdjfyho ask dufye laskdufjyqeuryij hal kdufyuiek asd saçdfkljsç ldkfjç laskdjfç lk jçlasdkfjçsalk jçklsjdfosja lças kjpaos difjsaçkjaos i oçij io jdoiasjf iajsodifjoasi j aosdifjsdoif jajsçdof iqjçeiru ksdjf pqeoirjlsdkafçjpqoiejrk uasdpfojkqekura sjçiquerkjçlas ua´jsodkfjaposdif jpasodifjaksldfuj oeiur aoser 
+    </p>
+    
+    <p class="cidade"></p>
+    
+    <p>
+        <picture> <!--Tag para alternar entre imagens para se adaptar a dispositivos com telas menores-->
+            <!--Forma condicional de aparecer uma imagem ou outra-->
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+            media="(min-width: 600px)"> <!--A imagem será exibida se no mínimo ela for 600 pixels. Caso a medida seja menor que 600px ele vai descendo para próxima imagem-->
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo">
+        </picture>
+    </p>
+</div>
+
+<style>
+    p{
+        position: absolute;
+        display: none;
+    }
+    .circular{
+        width: 513w;
+        background-color: #444;
+    }
+
+    .texto{
+        width: 400px;
+    }
+
+    .texto img{
+        margin-right: 10px;
+    }
+
+    .cidade{
+        width: 513px;
+        height: 342px;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat; /*Não repetir. Pois dependendo do tamanho da imagem ela pode repetir verticalmente ou horizontalmente*/
+        background-size: 200%;
+    }
+</style>
+
+<script>
+    function mover(elem, inicio, fim, passo, callback){ // Quando terminar de mover determinado elemento, ele vai chamar a função callback. Porque é preciso ser notificado quando terminado elemento terminou seu movimento.
+        const novoInicio = inicio - passo // diminuindo gradativamente a quantidade de pixels da imagem atual
+        if(novoInicio>=fim){
+            elem.style.left = novoInicio + 'px'
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+        } else{ // Quando acaba o movimento
+            callback()
+        }
+    }
+
+    function slider(){ 
+        const elementos = document.querySelectorAll('[wm-slider] > p') // pega todas as tags do tipo p que estão dentro de um elemento html com a propriedade wm-slider. Retorna um NodeList
+        const slides = Array.from(elementos) // transforma os elementos NodeList em um Array
+        exibirSlide(slides, slides[0])
+    }
+
+    function exibirSlide(slides, slide){
+        slide.style.display = 'block' // Fazendo com que a tag "p" fique visível. Ou seja, a imagem dessa tag irá aparecer
+        const inicio = innerWidth //Largura da área onde o conteúdo é apresentado
+        const fim = -slide.clientWidth //-Largura da imagem atual. Momento em  que toda a foto some da tela
+        slide.style.left = `${inicio}px` // O movimento começa nesse ponto
+        mover(slide, inicio, fim, 5, ()=>{
+            slide.style.display = 'none'
+            exibirSlide(slides, getProximo(slides,slide))
+        })
+    }
+
+    function getProximo(lista, atual){
+        const i = lista.indexOf(atual) + 1
+        return i < lista.length ? lista[i] : lista[0] // Se chegar no último elemento da lista (que contem a última foto), retorna para o primeiro elemento (com a primeira foto) em uma espécie de ciclo sem fim na transição das imagens
+    }
+
+    slider()
+
+    // const p = document.querySelector('[wm-slider] > p') // pega a primeira tag "p" dentro da propriedade "wm-slider"
+    // p.style.display = 'block' // Fazendo com que a tag "p" fique visível. Ou seja, a imagem dessa tag irá aparecer
+    // mover(p, 1500, -520, 5, ()=>{ //Mover a tag "p" de 1500 até -520 (pixels) com passo de 5 pixels
+    //     console.log('Terminou!!!')
+    // })
+
+</script>

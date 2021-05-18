@@ -24,12 +24,12 @@ let nomes = []
 getTurma('A', alunos => {
     //console.log(alunos) // Array de objetos com todos elementos da turma A
     nomes = nomes.concat(alunos.map(a => `A: ${a.nome}`))
-    console.log(nomes)
+    //console.log(nomes)
     
 
     getTurma('B', alunos => {
         nomes = nomes.concat(alunos.map( b => `B: ${b.nome}`))
-        console.log(nomes)
+        //console.log(nomes)
 
         getTurma('C', alunos => {
             nomes = nomes.concat(alunos.map( c => `C: ${c.nome}`))

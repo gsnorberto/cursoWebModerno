@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid #01</title>
+    <style>
+        /* https://caniuse.com/#feat=css-grid */
+        
+        html,
+        body {
+            margin: 20px;
+            height: calc(100% - 40px);
+            background-color: lightgray;
+        }
+        
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            border: solid 5px dodgerblue;
+            background: #fff;
+        }
+
+        body{
+            display: grid;
+            grid-template-columns: 50% 50%; /*Passa a ter a Grid com duas colunas*/
+            grid-template-columns: repeat(4, 8.33% 8.33% 8.33%); /*Três colunas - ocupando 8.33% cada uma - multiplicado por quatro = 12 colunas em uma mesma linha*/
+            grid-template-columns: repeat(11, 100px) 100px; /*Usa o repeat para 11 das 12 colunas, depois coloca 100px na 12 coluna*/
+            grid-template-columns: 200px 20% 1fr; /*A primeira coluna vai ter 200px, a segunda vai ter 20% do espaço no body, e a terceira vai pegar o resto do espaço sobrando*/
+            grid-template-columns: 3fr 6fr 3fr; /*A coluna do meio será o dobro do tamanho das outras */
+            grid-template-rows: 50% 25% 12.5% 12.5%; /*Primeira linha vai ocupar 50%, a segunda 25%... */
+            grid-template-rows: 100px 1fr; /*Primeira linha 100px, segunda linha será o restante que sobrou, terceira e quarta linha (como não foram definidas) vai manter as propriedades anteriores. Nesse caso: 12.5% nos dois*/
+            grid-template-rows: 100px auto; /*A primeira linha vai ter 100px e o resto será definido de forma automática*/
+        }
+
+        .d8{
+            /* Vai ocupar o espaço da linha 2 da coluna até a linha 4 da coluna */
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-column-end: span 2; /*comece da linha 2 e ande mais duas linhas. Vai surtir o mesmo efeito do código anterior*/
+
+            grid-row-start: 3;
+            grid-row-end: 5;
+            grid-row-end: span 2; /* Mesmo efeito do código acima */
+        }
+
+        .d10, 
+        .d11{
+            /*Podem se sobrepor*/
+            grid-column-start: 1;
+            grid-column-end: 3;
+
+            grid-row-start: 5;
+            grid-row-end: span 1; /*Um vai sobrepor a outra*/
+        }
+
+        .d10{
+            z-index: 10; /*O z-index 10 vai ficar na frente do 11 poque ele tem um z-index maior */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d1">1</div>
+    <div class="d2">2</div>
+    <div class="d3">3</div>
+    <div class="d4">4</div>
+    <div class="d5">5</div>
+    <div class="d6">6</div>
+    <div class="d7">7</div>
+    <div class="d8">8</div>
+    <div class="d9">9</div>
+    <div class="d10">10</div>
+    <div class="d11">11</div>
+    <div class="d12">12</div>
+</body>
+
+</html>

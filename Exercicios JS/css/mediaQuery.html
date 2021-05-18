@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Media Query</title>
+    <style>
+        div {
+            font-size: 40px;
+            margin: 20px;
+            padding: 20px;
+            background-color: coral;
+            border: solid 5px;
+            display: none;
+        }
+
+        /*Só vai aparecer quando a largura for menor que 600px*/
+        @media(max-width: 600px){
+            .muito-pequeno{display: block;}
+        }
+
+        /*Quando a orientação for "Retrato". landscape = paisagem*/
+        /*Com a vírgula ele a media query trabalha com o conceito de "ou" e não de "e". Então nesse exemplo se o tamanho for menor ou igual a 1000px OU a orientação for Retrato, ele vai satisfazer a condição*/
+        @media(max-width: 1000px), (orientation: portrait){
+            .pequeno-retrato{display: block;}
+        }
+
+        /*Se tiver no intervalo entre 500px e 1000px*/
+        @media(min-width: 500px) and (max-width: 1000px){
+            .intervalo{display: block;}
+        }
+    </style>
+</head>
+<body>
+    <div class="muito-pequeno">Muito Pequeno</div>
+    <div class="pequeno-retrato">Pequeno ou Retrato</div>
+    <div class="intervalo">Intervalo</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tamanho Box</title>
+    <style>
+        /* O seletor universal serve para que o box-sizing seja aplicado para todos os elementos da página. 
+        OBS: Se colocasse o box sizing dentro do "body" não iria ter esse efeito universal, pois a propriedade box sizing não pode ser herdada aos elementos filhos do body  */
+        *{
+            box-sizing: border-box; /*o border box resolve esse problema. Nesse caso a largura de 100% será contada com a soma do padding e do border*/
+        }
+        body {
+            font-size: 45px;
+            margin: 0;
+        }
+
+        div{
+            background-color: deepskyblue;
+            width: 100%; /*a largura vai ultrapassar o 100% da página por conta do padding e/ou o border definido abaixo. Há maneiras de se resolver isso...*/
+            height: 300px;
+            padding: 100px;
+            border: solid 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        O tamanho do Box é...
+    </div>
+</body>
+</html>

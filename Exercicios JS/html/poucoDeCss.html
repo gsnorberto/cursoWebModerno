@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Um pouco de CSS</title>
+
+        <!-- Importando arquivo CSS -->
+        <link rel="stylesheet" href="poucoDeCss.css">
+
+        <!-- Código css -->
+        <style> 
+            h1{
+                /* display: none; */
+                background-color: red;
+                position: absolute;
+                top: 400px;
+                left: 400px;
+                font-size: 40;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>CSS</h1>
+
+        <!-- Praticamente todas as tags do html tem a propriedade ID que é um identificador único-->
+        <span id="textoPrincipal">Texto 1</span> <br><br>
+
+        <!-- "Class" é outro tipo de identificador com uso de estilo, para que você possa usar uma classe mais de um vez dentro da sua página. Você pode ter elementos marcados com a mesma classe dentro de uma página e também pode ter elementos com mais de uma classe-->
+        <span class="fundoVermelho negrito">Texto 2</span> <br> <!-- Nesse exemplo temos duas classes aplicadas dentro desse span-->
+        <span class="fundoVermelho">Texto 3</span>
+    </body>
+</html>

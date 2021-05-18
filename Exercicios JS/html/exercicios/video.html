@@ -1,0 +1,73 @@
+<!-- autoplay = quando entrar na tela ele inicia o video automaticamente
+controls = habilitar os controles do vídeo: play, pause, etc...-->
+
+<video id="meuVideo" width="800" height="450" controls autoplay controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    Seu browser não suporta a tag video.
+</video>
+
+<!-- wm-progresso, wm-play e wm-pause pode atender a mais de uma vídeo diferente. Ou seja, é um código genérico.-->
+<div wm-progresso="meuVideo" class="progresso">
+    <!--Renderiza a barra de progresso do vídeo-->
+    <div>
+        <!--Responsável por ir preenchendo com uma cor a barra de progresso à medida que o vídeo vai sendo reproduzido-->
+
+    </div>
+</div>
+
+<div>
+    <!-- Para criação de botões personalizados (play, pouse, etc)-->
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+
+<style>
+    .progresso {
+        /*Borda externa da barra de progresso*/
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+        margin: 20px;
+    }
+
+    .progresso>div {
+        /*Borda interna da barra de progresso*/
+        background-color: red;
+        color: #fff;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 0%; /*Será aumentado gradativamente dentro se setInterval - valorDiv.style.width*/
+    }
+</style>
+
+<!-- <script> // acesse: https://www.youtube.com/watch?v=uYGm4Gb2t4M
+    var elementoVideo
+    var barraProgresso
+    var duracaoTotal
+    var update
+
+    function Iniciar(){
+        elementoVideo = document.getElementById("meuVideo")
+        barraProgresso = document.getElementById()
+    }
+</script> -->
+
+<!-- Visi http://localhost:5500/html/exercicios/video.html -->
+<script>
+    function configurarVideo(id) {
+        const video = document.getElementById(id)
+        video.oncontextmenu = () => false // Não deixar o usuário baixar o vídeo clicando com botão direito sobre ele
+        document.querySelector(`[wm-play=${id}]`).onclick = e => video.play() //Filtra pelo atributo com id específico
+        document.querySelector(`[wm-pause=${id}]`).onclick = e => video.pause()
+
+        setInterval(() => {
+            const percentual = (video.currentTime / video.duration) * 100
+            const valorDiv = document.querySelector(`[wm-progresso=${id}] > div`)
+            valorDiv.style.width = `${percentual}%` // Percentual da largura
+            valorDiv.innerHTML = `${percentual.toFixed(1)}%` // Coloca o texto dentro da DIV. Nesse caso, irá imprimir o valor percentual com apenas uma casa decimal
+
+        }, 500)
+    }
+    configurarVideo('meuVideo')
+</script>

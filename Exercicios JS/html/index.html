@@ -1,0 +1,57 @@
+<!--  Esse arquivo index ficará responsável por carregar (via Ajax) os conteúdos dos exercícios-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #conteudo {
+            padding: 30px 0px;
+        }
+    </style>
+
+<body>
+    <header>
+        Exercícios HTML
+    </header>
+
+    <nav>
+        <a href wm-nav="exercicios/teste.html"> 00 - Teste</a> |
+        <a href wm-nav="exercicios/texto1.html"> 01 - Texto 1</a>
+        <a href wm-nav="exercicios/texto2.html"> 02 - Texto 2</a>
+        <a href wm-nav="exercicios/listas.html"> 03 - Listas</a>
+        <a href wm-nav="exercicios/links.html"> 04 - Links</a>
+        <a href wm-nav="exercicios/tabela.html"> 05 - Tabela</a>
+        <a href wm-nav="exercicios/form/form.html"> 06 - Formulário</a>
+        <a href wm-nav="exercicios/imagens.html"> 07 - Imagens</a>
+        <a href wm-nav="exercicios/video.html"> 08 - Video</a>
+        <a href wm-nav="exercicios/tagsNaoVisuais.html"> 09 - Tags Não Visuais</a>
+    </nav>
+
+    <section id="conteudo"></section>
+
+    <footer>
+        Curso de Web Moderno
+    </footer>
+
+    <script>
+        // Selecionar todas as tags "[wm-nav]". Com isso ele retorna uma lista de tags
+        document.querySelectorAll('[wm-nav]').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+            link.onclick = function (e) { // Função que será chamada quando o usuário clicar
+                e.preventDefault()
+
+                //Requisição Ajax e o resultado colocar dentro do conteudo
+
+                fetch(link.getAttribute('wm-nav')) //Fazer uma requisição ajax sem necessariamente precisar do jquery ou qualquer outra biblioteca pra facilitar
+                    .then(resp => resp.text()) // pegar o conteúdo html da página que eu fiz a requisição
+                    .then(html => conteudo.innerHTML = html) // Vai substituir o conteúdo da seção que tem o ID "conteudo" e a partir daí conseguirá ver os conteúdos sendo alterados
+            }
+        })
+    </script>
+</body>
+
+</html>
