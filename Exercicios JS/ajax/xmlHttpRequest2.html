@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        input[type=file] {
+            display: flex;
+            margin: 10px;
+            padding: 40px;
+            font-size: 40px;
+            background: crimson;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <input type="file" name="arquivo" /> <!-- "arquvio" é o mesmo nome definido no backend server.js-->
+    <div class="progresso"></div>
+
+    <script>
+        function ajaxUpload(config) { //Função de upload
+            const xhr = new XMLHttpRequest()
+
+            if (xhr.upload) { // se xhr.upload estiver presente no objeto, significa que eu posso fazer o upload
+                xhr.upload.onprogress = e => { // forma para monitorar o progresso do upload
+                    const atual = e.loaded
+                    const total = e.total
+                    const percentual = Math.floor(atual / total * 100)
+                    config.progresso({ atual, total, percentual }) //função callback dentro do objeto config
+                }
+            }
+
+            xhr.open("post", config.url, true) // "post" é o tipo de método que vai enviar essa requisição Ajax. true = assíncrono
+            xhr.send(config.formData) //Envia informações para o servidor. Dentro do formData vai conter o arquivo que foi selecionado a partir do input
+        }
+
+        // Essa função vai ser chamada no momento em que eu selecionar o arquivo. Automaticamente irá iniciar o upload
+        document.querySelector('input[type=file]').onchange = e => {
+            const formData = new FormData()
+            const inputFile = e.target // e.target = "input type = file".
+            formData.append(inputFile.name, inputFile.files[0]) //  pega o nome ddo input que é "arquivo", e o primeiro arquivo a partir do índice zero
+
+            ajaxUpload({
+                url: "upload", //deve ser exatamente o nome definido no servidor "server.js". Ou seja, dentro da aplicação 8080 ele vai chamar o /upload no final
+                formData: formData,
+                progresso(dados) {
+                    const progresso = document.querySelector('.progresso')
+                    progresso.innerHTML = JSON.stringify(dados) //converte para string
+                }
+            })
+        }
+    </script>
+</body>

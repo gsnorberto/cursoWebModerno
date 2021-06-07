@@ -1,0 +1,90 @@
+*{
+    box-sizing: border-box;
+}
+
+/* Importando a fonte da pasta "fonts" */
+@font-face{
+    font-family: 'Pixel';
+    src: url('../fonts/Pixel.ttf')
+}
+
+[wm-flappy]{
+    position: relative;
+    border: 5px solid dodgerblue;
+    height: 700px;
+    width: 1200px;
+    margin: 15px;
+    background-color: deepskyblue;
+    overflow: hidden; /*Qualquer coisa que esteja fora da div vai ficar escondida, já que as barreiras do joguinho vêm de fora da div e saem da div*/
+}
+
+.passaro{
+    position: absolute;
+    width: 60px;
+    left: calc(50% - 30px); /*Posição do pássaro em relação ao X*/
+}
+
+.par-de-barreiras{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.barreira{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.barreira .borda{
+    height: 30px;
+    width: 130px;
+    background: linear-gradient(90deg, #639301, #A5E82E);
+    border: 2px solid #000;
+}
+
+.barreira .corpo{
+    height: 150px; /*altura vai ser variável*/
+    width: 110px;
+    background: linear-gradient(90deg, #639301, #A5E82E);
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+}
+
+.progresso{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: Pixel;
+    font-size: 70px;
+    z-index: 100; /*Pontuação na frente de todos elementos*/
+}
+
+.gameOver{
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    font-family: Pixel;
+    font-size: 150px;
+}
+
+.btn-estilo{
+    color: white;
+    text-shadow: 4px 2px black;
+    position: absolute;
+    background-color: transparent;
+    border-color: transparent;
+    top: 60%;
+    left: 42%;
+    z-index: 100;
+    font-family: Pixel;
+    font-size: 60px;
+}
+
+.areaGame button:hover{
+    background-color: black;
+    color: white;
+}

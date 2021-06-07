@@ -1,0 +1,10 @@
+Comandos utilizados - Dentro da pasta "Gulp"
+    - npm i - instalar todas as dependências
+    - npm install --global gulp-cli  ou npm install -g gulp
+    - npm install --save gulp-sass (necessário para exemplo de css - sass)
+
+Para ter acesso a alguns comandos do gulp no terminal do VSCode é necessário habilitar a execução de alguns scripts no powershell. Para isso, execute o powershell como administrador e digite os seguintes comandos:
+    -Get-ExecutionPolicy (deverá aparecer "Restricted")
+    -Set-ExecutionPolicy Unrestricted
+    -"S"
+    -Get-ExecutionPolicy (deverá aparecer "Unrestricted")

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Axios #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/axios.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Axios Get/Post</h1>
+    <div id="get"></div>
+    <div id="post"></div>
+
+    <script>
+        // ID vai ser a div get ou post. E os dados vão ser os daods que eu quero colocar dentro dessa div
+        function exibirResultado(id,dados){
+            const texto = JSON.stringify(dados) // Converte o objeto JSON para String
+            document.getElementById(id).innerHTML = texto
+        }
+
+        axios.get('parOuImpar', {
+            params:{
+                numero: 5
+            }
+        }).then(resp => exibirResultado('get', resp.data)) // Get é o ID. Resp.data é  o que veio como resposta do servidor
+        
+        // Faz a mesma coisa que o axios.get
+        // axios('parOuImpar?numero=7').then(resp => exibirResultado('get', resp.data))
+
+        axios.post('formulario', {
+            nome: 'João',
+            sobrenome: 'Silva'
+        }).then(resp => exibirResultado('post', resp.data))
+    </script>
+</body>

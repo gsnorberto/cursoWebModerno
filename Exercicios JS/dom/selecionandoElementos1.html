@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        document.getElementById('primeiro').classList.add('destaque') /*Seleciona o elemento cujo ID é 'primeiro' e adiciona a ele uma classe chamada 'destaque'. Como já é esperado um ID e uma classe, não precisa colocar a "#" e o "." */
+        const divs = document.getElementsByTagName('div') /*Seleciona todos os elementos com a tag "div". Seu formato será em "html colection"*/
+        Array.from(divs).forEach(e => e.classList.remove('destaque')) /*Transformar a "divs" em um array. Depois percorre esse array procurando uma tag com a classe "destaque" e remove essa classe*/
+
+        /*Outra forma de transformar um HTML colection em um Array - Spread*/
+        const divsArray = [...divs]
+        divsArray.forEach(e => e.classList.add('destaque')) /*Aplica a classe "destaque" para todos os elementos*/
+
+        /*Usar a função para selecionar os elementos a partir da classe*/
+        const ultimosElementos = document.getElementsByClassName('ultimo') /*Pega os elementos(tags) cuja a classe é 'ultimo' e armazena em um HTML colection*/
+        for(let e of ultimosElementos){
+            e.classList.remove('destaque') /*Remove a classe destaque do elemento que tem a classe 'ultimo'*/
+        }
+    </script>
+</body>
+</html>

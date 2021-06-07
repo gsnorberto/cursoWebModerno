@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <label for="compras">Compras</label>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li> 
+            <li>Copo Descartável</li> 
+        </ul> 
+    </div> 
+    <script>
+        const lista = document.querySelector('div ul[destino="escritório"]') /*também pode ser acessado através de "#compras"*/
+        console.log('childNodes', lista.childNodes) /*Use .children para ignorar as quebras de linhas*/
+        console.log('id', lista.id) /*Compras*/
+        console.log('destino', lista.destino) /*Essa é uma propriedade que o browser não conhece. Pois "destino" é uma propriedade personalizada que o browser não conhece. O resultado será Undefined*/
+        console.log('getAttribute', lista.getAttribute('destino')); /*Usando essa função ele considera as propriedades personalizadas*/
+        console.log('hasAttribute', lista.hasAttribute('destino')); /*Verificar se há o atributo "destino"*/
+        lista.setAttribute('destino', 'empresa') /*O valor de "Destino" vai passar a ser "empresa" em vez de "escritório"*/
+        lista.setAttribute('status', 'aberto') /*Adiciona o Atributo status com valor "aberto", pois esse atributo ainda não existia dentro da "ul" da lista de compras*/
+        lista.removeAttribute('destino')
+
+        /*DATASET não é muito utilizado. Prefira a abordagem padrão*/
+        console.log(lista.dataset) /*Retorna: {urgencia: "5"}*/
+        console.log(lista.dataset.urgencia) /*Retorna: 5*/
+        lista.dataset.urgencia = 4
+        console.log(lista.getAttribute('data-urgencia')); /*Retorna: 4*/
+
+        /*Cuidado*/
+        const label = document.querySelector('label')
+        console.log(label.for) /*Undefined, pois for é uma palavra reservada da linguagem*/
+        console.log(label.htmlFor) /*compras*/
+        console.log(label.getAttribute('for')); /*compras*/
+    </script>
+</body>
+
+</html>

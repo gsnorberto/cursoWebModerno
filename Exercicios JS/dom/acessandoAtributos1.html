@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <a href='https://www.cod3r.com.br'>Cod3r</a>
+    </div>
+    <div id='primeiro'>
+        <img src='http://files.cod3r.com.br/curso-web/logo-estreita.png' alt='logo'>
+    </div>
+    <script>
+        /* com o seletor 'tag' seleciona uma tag. Com o seletor '.img' seleciona uma classe. Com o seletor '#img' seleciona um ID. E com o seletor '[img]' seleciona uma propriedade*/
+        const img = document.querySelector('img')
+        console.log('getAttribute', img.getAttribute('src')) /*Pega o valor do atributo "src" que é o link*/
+        console.log(img.src) /*Também pega a url dentro do src*/
+        console.log(img['src']) /*Também pega a url dentro do src*/
+        console.log(img.alt) /*logo*/
+
+        console.log('Elemento "img" ..................');
+        console.log('NodeType', img.nodeType) /* Resultado: 1 (NodeType = element). Todos os elementos e atributos tem uma propriedade chamada NodeType*/
+        console.log('NodeName', img.nodeName); /* Resultado: IMG */
+
+        const src = img.getAttributeNode('src')
+        console.log('Atributo src" ..................');
+        console.log('NodeType', src.nodeType); /* NodeType 2 = Attribute Type*/
+        console.log('NodeName', src.nodeName); /*src*/
+        console.log('NodeValue', src.nodeValue); /*Valor associado ao atributo, que nesse caso é o link*/
+
+        const link = document.querySelector('a')
+        console.log('Elemento "a" ..................');
+        console.log('href', link.href); /*Retorna o link*/
+        console.log('firstChild.nodeType', link.firstChild.nodeType); /*Tipo do elemento do primeiro filho de "link", que nesse caso é um NodeType 3 = tipo textual*/
+        link.firstChild.nodeValue = 'Novo Texto' /*Altera o valor "cod3r" para "Novo Texto"*/
+        link.innerHTML = 'Novo Texto 2' /*Foma mais comum de fazer a mesma coisa do que o código acima*/
+    </script>
+</body>
+
+</html>

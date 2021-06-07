@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <!--FORMA 1 - NÃO IDEAL -->
+        <!--onclick="navegarEm5s(event)" -> pode ser usado dentro da tag "a" abaixo, para executar o evento de click-->
+        <a espera-um-pouco href="https://google.com.br">Google</a> <!--O broser já tem dentro do contexto do onclick a função "event"-->
+    </div>
+    <script>
+        //Interceptar o click
+        function navegarEm5s(e){ // "e" é o evento do click
+            e.preventDefault() //Previne que o evento padrão ocorra
+            console.log('Direcionando em 5s...')
+            setTimeout(() => {
+                window.location.href = e.target.href // Target é o elemento html que disparou o evento. Nesse exemplo, se eu clico no link o e.target é o prório link. Nesse exemplo, está substituindo o endereço na barra de endereço do browser
+            }, 5000)
+        }
+
+        //FORMA 2 - NÃO IDEAL
+        // const a = document.querySelector('a')
+        // a.onclick = navegarEm5s
+
+        //FORMA 3 - IDEAL
+        const a = document.querySelector('[espera-um-pouco]')
+        a.onclick = navegarEm5s
+    </script>
+</body>

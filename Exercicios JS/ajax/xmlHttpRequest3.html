@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        function ajax(config){
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.metodo, config.url, true)
+
+            xhr.onreadystatechange = e => {
+                if(xhr.readyState === 4){ // Quando a requisição foi finalizada
+                    if(xhr.status === 200){ //foi bem sucedida
+                        config.sucesso(xhr.responseXML)
+                    } else if (xhr.status >= 400){
+                        config.erro({
+                            codigo: xhr.status,
+                            texto: xhr.statusText
+                        })
+                    }
+                }
+            }
+
+            xhr.send()
+        }
+
+        ajax({
+            url: "dados/estados.xml",
+            metodo: "get",
+            sucesso(resposta){
+                const estados = resposta.getElementsByTagName('estado') //pega cada elemento com a tag "estado" do arquivo "estados.xml"
+                const itens = Array.from(estados).reduce((html, estado) => { // Esse array vai ter um único elemento no final que será uma string
+                    return html + `<li>${estado.attributes.nome.value}</li>` //Inicialmente, o reduce começa com uma string vazia, concatenando o texto com o acumulador (html). No final, vai gerar elementos do tipo li, cada li com o nome do estado
+                },'')
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`) // antes de terminar o body coloca a <ul> com todos os itens que foi feito na função reduce
+            },
+            erro(e){
+                const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)
+                document.body.appendChild(msg)
+            }
+        })
+    </script>
+</body>

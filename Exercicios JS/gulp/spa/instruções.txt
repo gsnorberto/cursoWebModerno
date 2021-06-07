@@ -1,0 +1,16 @@
+OBS: PARA EXECUÇÃO DO GULP É PRECISO APENAS DIGITAR O COMANDO "gulp" DENTRO DO TERMINAL NO DIRETÓRIO "spa"
+
+---------------------------------------------------------------
+
+-"src" é a pasta com os arquivos para desenvolvimento do código
+
+-"gulpTasks" é a pasta com os arquivos de configuração do gulp responsáveis por transferir e configurar os arquivos de desenvolvimento para uma pasta final do projeto. Ele também faz o monitoramento através do arquivo "servidor.js" para que tiver qualquer alteração dentro do arquivo de desenvolvimento ele também altere no arquivo final do projeto
+
+-"build" é a pasta final do projeto com tudo configurado pelo gulp.
+
+---------------------------------------------------------------
+
+Comandos utilizados:
+    -npm i (dentro da pasta spa)
+    -npm install --save gulp-sass
+    -npm audity fix

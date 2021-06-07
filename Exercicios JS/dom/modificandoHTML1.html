@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+
+    <script>
+        const body = document.querySelector('body')
+
+        const div1 = document.createElement('div') // Cria a div
+        div1.classList.add('destaque') // Adiciona uma classe "destaque" a essa div
+        div1.innerHTML = 'Primeiro' //Adicina o texto dentro da div
+
+        const div2 = document.createElement('div')
+        div2.setAttribute('wm-atributo','valor') // a div vai ter a propriedade wm-atributo = valor
+        div2.innerHTML = 'Segundo'
+
+        const p = document.createElement('p')
+        p.innerHTML = 'Terceiro'
+
+        const div3 = document.createElement('div')
+        div3.appendChild(p) // a div "p" vai ser adicionada como  filho da "div3"
+
+        body.appendChild(div1) //Adiciona a "div1" dentro do "body"
+        body.appendChild(div2)
+        body.appendChild(div3)
+
+        const texto = document.createTextNode('Antes...')
+        div3.insertBefore(texto, div3.childNodes[0]) // Passa o elemento que você quer adicionar e a posição (nesse caso, insere antes do elemento 0). 
+
+        const div4 = div3.cloneNode(true) //Faze um clone da div. Se passar "true" ele também clonas os filhos
+        body.appendChild(div4)
+        body.removeChild(div3) // A div 4 passa a ser a div 3
+    </script>
+
+</body>
+
+</html>

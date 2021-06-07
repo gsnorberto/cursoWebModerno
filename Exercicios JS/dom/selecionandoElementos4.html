@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        function log (){
+            console.log(this);
+        }
+
+        /*Maneira de simplificar o "console.log". Para todos esses elementos abaixo se chamar a função ".log" ele vai se logar no console*/
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log() /*A partir de um determinado elemento você consegue pegar o elemento pai. O resultado será a "div" que é o pai da "ul". Para conferir, abra o console no navegador.*/
+        lista.childNodes.log() /*Pega os elementos filhos da "ul". Vai retornar as 3 "<li>" e 4 "text" (efeito colateral por conta das quebras de linha"*/
+        const primeiro = lista.firstChild
+        primeiro.log() /* vai ser um elemento "text"*/
+        primeiro.nextSibling.log() /*vai mostrar o <li> logo depois do primeiro "text"*/
+        const ultimo = lista.lastChild
+        ultimo.log()
+        ultimo.previousSibling.log() /*Elemento anterior ao elemento "ultimo"*/
+
+        lista.children.log() /*Nesse caso, não vem mais os "text" (proveniente das quebras de linha), somente os "li"*/
+        lista.firstElementChild.log() /*Traz o primeiro elemento de fato que foi definido na lista, que é o <li>Pedro</li>*/
+        lista.lastElementChild.log() /* <li>Bia</li> */
+        lista.parentNode.previousElementSibling.log() /*Pega a div "Início" */
+        lista.parentNode.nextElementSibling.log() /*Pega a div "Fim" */
+
+        document.querySelectorAll('div ul li').log() /*Sempre que possível prefira esse tipo de abordagem em vez de trabalhar com elementos filhos, pais, etc*/
+    </script>
+</body>
+
+</html>

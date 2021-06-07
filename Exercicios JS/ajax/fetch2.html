@@ -1,0 +1,70 @@
+<!-- Requisição do tipo Post para mandar dados para o servidor. Será necessário criar uma função no servidos (server.js), essa função irá tratar o post-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Fetch API #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário Via Fetch</h1>
+    <form name="usuarioForm" action="formulario" method="post">
+        <input type="text" name="nome" placeholder="Nome..." />
+        <input type="text" name="sobrenome" placeholder="Sobrenome..." />
+        <button>Salvar</button>
+    </form>
+    <div id="resultado"></div>
+    <script>
+        document.usuarioForm.onsubmit = async e => { // No momento em que clicar no botão "salvar" ele chamará a função onsubmit
+            e.preventDefault()
+
+            const form = e.target
+            const data = new FormData(form) // pega todos os dados que foram preenchidos no formulário
+            data.append('ajax', true) // Adicionando um novo dado
+
+            const options = {
+                method: form.method, //post
+                body: new URLSearchParams(data) // os dados do formulário vão para o backend
+            }
+
+            // Existem duas formas de se trabalhar com processamento assíncrono (ou seja, Promises) em JavaScript: utilizando o método .then() ou as palavras-chave async e await.
+
+            //form.action é a url que eu quero disparar no backend. Options serve para personalizar o método desejado e ter o body da requisição que é exatamente todos os dados do meu formulário
+            const resultado = document.getElementById('resultado')
+
+            // fetch(form.action, options)
+            //     .then(resp => resp.json())
+            //     .then(json => {
+            //         const resultado = document.getElementById('resultado')
+            //         resultado.innerHTML = JSON.stringify(json)
+            //     })
+            //     .catch(e => {
+            //         resultado.innerHTML = e
+            //     })
+
+            // Fazendo a mesma coisa que o código comentado acima usando async await
+            try {
+                const resp = await fetch(form.action, options)
+                const json = await resp.json()
+                resultado.innerHTML = JSON.stringify(json)
+            } catch (e) {
+                resultado.innerHTML = e
+            }
+        }
+    </script>
+</body>

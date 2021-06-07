@@ -1,0 +1,19 @@
+comandos utilizados (todos os comando dentro da pasta ajax):
+    -npm init -y //Instala o package.json
+    -npm i // (depois de incluir os comandos abaixo no package.json)Instala as dependências
+    -npm start //startar o servidor (toda vez que for trabalhar com o código)
+
+comandos incluídos no package.json:
+    "scripts": {
+    "start": "nodemon server.js"
+    },
+
+  "dependencies": {
+    "body-parser": "1.18.2", //faz o parser(análise) da requisição. Ou seja, quando você submete dados para o servidor, ele é responsável por ler esses dados do corpo da requisição e deixar disponível no backend
+    "express": "4.16.3", //Servidor express
+    "multer": "1.3.0" //Fazer upload
+  },
+
+  "devDependencies": {
+    "nodemon":"1.17.3" //Monitora os arquivos sempre que houver uma mudança no servidor
+  }

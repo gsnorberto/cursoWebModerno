@@ -1,0 +1,72 @@
+<!-- https://developer.mozilla.org/pt-BR/docs/Web/API/XMLHTTPRequest -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        // Função para fazer requisição ajax. Recebe um objeto que tem todos os parâmetros. Esse objeto tem o parâmetro método, url 
+        function ajax(config) { // "config" é um objeto que representa as configurações. Dentro desse objeto terá vários parâmetros como: url, método que será chamado em caso de erro ou sucesso, etc.
+            const xhr = new XMLHttpRequest() // "xhr" = XML - HTTP - REQUEST
+            xhr.open(config.metodo, config.url, true) // Abre uma requisição do tipo GET, e espera receber dentro de "config" um parâmetro chamado url. O terceiro parâmetro (true) diz que essa requisição vai ser feita de forma assíncrona
+            xhr.onload = e => {
+                //Funções de sucesso e erro
+                if (xhr.status === 200) {
+                    config.sucesso(xhr.response) // Quando o status é de sucesso, passa a resposta que obteve depois que foi carregado os dados no evento "onload"
+                } else if (xhr.status >= 400) { //Quando o status é de erro
+                    config.erro({
+                        codigo: xhr.status, //código
+                        texto: xhr.statusText //mensagem de texto do erro
+                    })
+                }
+            }
+            xhr.send() // Envia a requisição
+        }
+
+        function criarTabela(estados) {
+            const linhas = estados.map(estado => {
+                const tdID = document.createElement('td') //table data "ID" do tipo "td"
+                tdID.innerHTML = estado.id //Coloca dentro do "tdID" o "estado.id"
+
+                const tdNome = document.createElement('td')
+                tdNome.innerHTML = estado.nome
+
+                const tdSigla = document.createElement('td')
+                tdSigla.innerHTML = estado.sigla
+
+                const tr = document.createElement('tr') // Criando a linha da tabela
+
+                // Adicionando as três células à linha da tabela
+                tr.appendChild(tdID)
+                tr.appendChild(tdNome)
+                tr.appendChild(tdSigla)
+
+                return tr
+            })
+            const tabela = document.createElement('table') // cria a tabela
+            linhas.forEach(linha => tabela.appendChild(linha)) // adiciona todas as linhas da tabela
+            document.body.appendChild(tabela) // adiciona a tabela no Body
+        }
+
+        ajax({
+            url: "dados/estados.json", // cotem um array de objetos
+            metodo: "get",
+            sucesso(resposta) { // No momento em que receber a resposta começa a renderizar a tabela
+                const estados = JSON.parse(resposta) // recebe os dados JSON e converte para objeto
+                criarTabela(estados)
+                // Converter o estado para uma linha DOM. Usa o Map para transformar array de estados em um conjunto de elementos da DOM. Vai transformar cada objeto dentro de "estados.json" em uma table row (linha da tabela)
+            },
+            erro(e) { //Função de erro caso dê algum problema
+                const msg = document.createTextNode(`${e.codigo}:${e.texto}`)
+                document.body.appendChild(msg)
+            }
+        })
+    </script>
+</body>
