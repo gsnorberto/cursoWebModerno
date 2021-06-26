@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+
+        #resultado {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #03</h1>
+    <div id='div1'>1</div>
+    <div id='div2'>2</div>
+    <input id='input1' type='text' placeholder='Digite Algo!'>
+    <span id='resultado'></span>
+
+    <script>
+        function exibirDadosEvento(e){
+            $('#resultado').empty() //limpar o resultado sempre que chamar essa função
+            const div1 = $('<div>')
+            const div2 = $('<div>')
+            $('#resultado').append(div1, div2)
+            div1.append(`target: ${e.target.id}`)
+
+            const rt = e.relatedTarget ? e.relatedTarget.tagName : null
+            div1.append(`<br>relatedTarget: ${rt}`)
+            div1.append(`<br>type: ${e.type}`) //mostra se o mouse está dentro ou fora da div1
+            div1.append(`<br>which: ${e.which}`) //mostral qual tecla ou botão do mouse você utilizou
+            div1.append(`<br>metaKey: ${e.metaKey}`) //segurar a tecla do windows e passar o mouse em cima da div = vai ficar true
+
+            div2.append(`pageX: ${e.pageX}`)
+            div2.append(`<br>pageY: ${e.pageY}`)
+            div2.append(`<br>clientX: ${e.clientX}`)
+            div2.append(`<br>clientY: ${e.clientY}`)
+        }
+
+        $('#div1, #div2').on('mouseenter mouseleave', exibirDadosEvento)
+        $('input').keyup(exibirDadosEvento)
+    </script>
+</body>

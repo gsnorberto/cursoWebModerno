@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Galeria de Fotos</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    <!--Barra de navegação superior-->
+    <header wm-include="/pages/template/header.html"></header>
+    <!-- O JS vai ler esse propriedade e injeta dentro do body a partir dessa propriedade "wm-include" a página que foi referenciada-->
+
+    <!--Importação do header e body da galeria-->
+    <main class="bg-light" wm-include="/pages/galery/galery.html"></main>
+
+    <!--Importação do Footer da página-->
+    <footer class="footer" wm-include="/pages/template/footer.html"></footer>
+
+    <script src="app.js"></script> 
+</body>
+
+</html>

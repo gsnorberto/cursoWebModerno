@@ -1,0 +1,5 @@
+Existem algumas formas de importar o jQuery para seu projeto:
+    -baixando do site
+    -via comando no terminal
+    -via cdn 
+O jQuery em nosso projeto está dentro da pasta js, cujo arquivo é jquery.js

@@ -1,3 +1,5 @@
+Comando no terminal - npm i (dentro da pasta "funcionarios")
+
 Dentro da pasta contendo o package.json é possível recriar a pasta node_module através
 do comando "npm i". Dentro da pasta node_module ele automaticamente já instala o axios
 e suas dependências junto com "follow redirects" o ambos presentes como dependências 

@@ -1,0 +1,24 @@
+No modo "npm start" que starta o "webpack-dev-server" ele não vai criar a pasta com os arquivos, vai ficar tudo em memória.
+Quando você executa o "npm run build" passando a flag "production" (no package.json) a pasta build será criada e os arquivos serão criados para que você possa pegar esses arquivos e jogar no seu servidor. 
+Toda vez que executar o comando "npm run build", se a pasta build já estiver sido criada, ele sobreescreve a pasta com os arquivos mais atualizados.
+
+O node-sass instalado foi a versão 4.14 em vez da 4.12 que veio no package.json, pois a versão 4.12 não tem compatibilidade com o node 14 instalado na minha máquina.
+
+src = pasta de desenvolvimento
+build = pasta contendo o projeto final já processada pela webpack. Essa pasta é gerada e atualizada ao executar o comando
+    -npm run build
+
+Executar o projeto
+    -npm start
+
+Instalar dependências 
+    -npm i
+
+Versões alteradas no package.json
+    - "webpack-dev-server": "3.1.4"
+    - "node-sass": "4.14.0"
+
+
+ARQUIVOS DO PROJETO 
+    - includes.js = jQuery com chamada ajax para comunicação com o servidor "server.js"
+    - cityButtons.js = Botões e eventos de botão. 

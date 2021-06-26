@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Animação #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        body {
+            position: relative;
+            background-color: #999;
+            color: #000;
+        }
+
+        div {
+            position: absolute;
+            display: inline;
+            border: solid 10px #000;
+            padding: 50px;
+            font-size: 3em;
+            background-color: crimson;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Animar!</div>
+
+    <script>
+        function alterarLargura(valor, duracao, callback){
+            $('div').animate({width: `+=${valor}`}, duracao, callback) //largura vai receber um valor adicional, a duração da animação, e a callback que será chamada quando a animação terminar
+        }
+
+        function moverDiagonal(valor, duracao, callback){ //mexe simultaneamente no left e top para mover na diagonal
+            $('div').animate({ top: `+=${valor}`, left: `+=${valor}`}, duracao, callback)
+        }
+
+        function girar(valor, duracao, callback){
+            $('div').animate({transform: `+=${valor}`}, {
+                step: function(valor){ //para cada interação vai chamar esse step para que possa fazer a rotação em cima do valor que foi passado
+                    $(this).css('transform', `rotate(${valor}deg)`)
+                },
+                duration: duracao
+            }, 'linear', callback) //As animações vão desenvolver de forma linear
+        }
+
+        //Também pode se usar promises em vez de callbacks
+        alterarLargura(300, 100, () => {
+            alterarLargura(-300, 'slow', () => {
+                moverDiagonal(300, 600, () => {
+                    girar(3300, 3000) //girar 3300 graus e demorar 3 segundos para dar todas essas voltas
+                })
+            })
+        })
+    </script>
+</body>

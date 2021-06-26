@@ -1,0 +1,11 @@
+É sempre importante consultar a documentação do bootstrap através do site -> https://getbootstrap.com/docs/5.0/getting-started/introduction/
+
+Comandos de instalação de módulos (dentro de "exercicios")
+    -npm i --save-dev jquery@3.3.1 -E (versão exata)
+    -npm i --save-dev popper.js@1.14.3 -E
+    -npm i
+
+Startar a aplicação
+    -npm start
+
+O bootstrap depende do jQuery

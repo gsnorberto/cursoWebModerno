@@ -1,0 +1,6 @@
+Comando utilizado para criar a versão inicial da aplicação já com build configurado 
+    -npm i -g create-react-app
+    -create-react-app exercicios //cria o projeto "exercicios"
+
+Para executar o projeto execute o terminal dentro da pasta "exercicios" e digite o seguinte comando:
+    -npm start ou yarn start - dá no mesmo

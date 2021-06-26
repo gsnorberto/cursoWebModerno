@@ -12,5 +12,6 @@ OBS: PARA EXECUÇÃO DO GULP É PRECISO APENAS DIGITAR O COMANDO "gulp" DENTRO D
 
 Comandos utilizados:
     -npm i (dentro da pasta spa)
+    -npm i (dentro da pasta gulp)
     -npm install --save gulp-sass
     -npm audity fix

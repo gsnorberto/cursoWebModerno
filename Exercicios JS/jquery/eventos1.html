@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #01</h1>
+    <div id='posicao'></div>
+    <!--Pegar a posição do mouse-->
+    <div id='cliques'>Cliques: 0</div>
+    <!--click do mouse-->
+    <input type="text" placeholder="Cor de Background">
+
+    <script>
+        function mostrarPosicaoMouse(e) {
+            $('#posicao').html(`x: ${e.clientX} y: ${e.clientY}`)
+        }
+
+        //associar ao body o evento de movimento do mouse
+        $('body').on('mousemove', mostrarPosicaoMouse) //Quando acontecer o evento "mousemove" ele vai chamar a função "mostrarPosicaoMouse"
+
+        $('#posicao').mouseover(e => {
+            $('body').off('mousemove', mostrarPosicaoMouse) //Para de atualizar a posição do mouse quando o ponteiro passa por cima da div com id = "posicao"
+        })
+
+        $('#posicao').mouseleave(e => {
+            $('body').mousemove(mostrarPosicaoMouse) //funciona da mesma forma que o "on"
+        })
+
+        let cliques = 0
+        $('body').click(e => {
+            $('#cliques').html(`Cliques: ${++cliques}`)
+        })
+
+        const backGroundOriginal = $('body').css('background-color')
+
+        $('input').keyup(function (e) { //Não pode ser uma arrow function pois senão o "this" vai ser o objeto global "window". Nesse exemplo o this é o input
+            //console.log(e.target.value) //pega o valor dentro do campo de texto
+            const valor = $(this).val() //pega o valor atual escrito dentro do input
+            if(valor.match(/#[\da-fA-F]{3,6}/)) { // pode ter um dígito, ou um valor de "a" até "f" minúsculo ou de "A" até "F" maiúsculo, de 3 a 6 caracteres
+                $('body').css('background-color', valor)
+            } else{ //caso contrário vai restaurar o background padrão
+                $('body').css('background-color', backGroundOriginal)
+            }
+        })
+    </script>
+</body>

@@ -1,0 +1,1 @@
+-a pasta "core" contem arquivos com funcionalidades que serão utilizadas em várias outras funcionalidades do sistema

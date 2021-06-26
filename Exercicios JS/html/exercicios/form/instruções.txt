@@ -1,0 +1,2 @@
+instalar as dependências dentro da pasta "form"
+-npm i

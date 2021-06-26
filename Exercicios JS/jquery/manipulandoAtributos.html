@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Manipulando Atributos</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        [wm-relogio] {
+            text-align: center;
+        }
+
+        [wm-relogio] button {
+            font-size: 1.6em;
+            padding: 0px 25px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+
+    <h1>Manipulando Atributos</h1>
+    <div wm-relogio='1000'></div>
+    <!--O objetivo desse exemplo é mostrar a função "attr" que serve tanto para ler conteúdo da propriedade, quanto para alterar o conteúdo-->
+    <script>
+        function Relogio(elemento){ 
+            const horaCerta = $('<p>') //vai setar um parágrafo que ficará atualizando a hora mais atual
+            const botaoMenos = $('<button>').html('-') //diminuir a quantidade de tempo que o relógio vai ficar atualizando
+            const botaoMais = $('<button>').html('+')
+
+            const $elemento = $(elemento) //Adicionando o Jquery (suas funcionalidades) ao elemento DOM
+            $elemento.append(horaCerta, botaoMenos, botaoMais)
+
+            const getIntervalAtual =
+                () => parseInt($elemento.attr('wm-relogio')) //vai retornar o valor 1000 como string, e vai converter para inteiro
+            let temporizador = null //vai ter o resultado da função setInterval
+
+            const iniciar = () => {
+                if(temporizador) clearInterval(temporizador) //limpar temporizador. Parar o temporizador atual
+                temporizador = setInterval(() => {
+                    horaCerta.html(new Date().toLocaleString('pt-BR'))
+                }, getIntervalAtual())
+            }
+
+            const alterarIntervalo = delta => {
+                const novo = Math.max(getIntervalAtual() + delta, 1000) // Esse tipo de função retorna o "getIntervalAtual() + delta" se se o resultado for maior ou igual a 1000. E se for menor que 1000 retorna o próprio 1000
+                $elemento.attr('wm-relogio', novo) //dentro desse propriedade só vai ser setado valores de 1000 para cima. Atribui o valor de "novo" para a propriedade "wm-relogio"
+                iniciar() //sempre que alterar o intervalo
+            }
+
+            botaoMenos.click(e => alterarIntervalo(1000))
+            botaoMais.click(e => alterarIntervalo(-1000))
+            iniciar()
+        }
+        $('[wm-relogio]').each((i,e) => new Relogio(e))
+
+        // $('[wm-relogio]').attr('opa') //ler atributo
+        //  $('[wm-relogio]').attr('opa', 3) //alterar ou incluir atributo
+        $('[wm-relogio]').attr({opa: 1, novo:true}) //adicionar atributo
+        $('[wm-relogio]').removeAttr('opa') //remover atributo
+    </script>
+
+</body>

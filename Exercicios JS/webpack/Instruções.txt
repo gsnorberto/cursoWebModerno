@@ -1,0 +1,14 @@
+Comandos Utilizados
+    Comando no terminal - npm i (dentro da pasta "webpack")
+    -npm init -y (vai criar o "package.json")
+    -npm i (para instalar as dependências (devDependencies) adicionadas no package.json)
+    
+    -npm start (modo de execução para desenvolvedor)
+    -npm run build (modo de execução fazendo a minificação dos arquivos)
+
+-Pasta src = Pasta com os arquivos em desenvolvimento
+    -Pasta assets = recursos estáticos da aplicação. CSS é um exemplo deles
+
+-Pasta public = Pasta com projeto final
+
+-webpack.config.js = arquivo de configuração
