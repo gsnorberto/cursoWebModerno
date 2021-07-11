@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{contador}}</p>
+        <p>
+            <button v-on:click="add">+1</button> <!--v-on = é responsável por fazer o bind de uma função/método para ser chamado na hora que acontecer um evento. "add" é o nome do método-->
+        
+            <button @click="contador-=2">-2</button> <!--@click faz o mesmo que v-on-->
+        </p>
+
+        <p @mousemove="atualizarPosicao"> <!--Atualiza o x e o y ao movimentar o mouse dentro do parágrado-->
+            Coordenadas: {{x}} e {{y}}
+            <span @mousemove.stop>Aqui não</span> <!--Dentro desse span para de atualizar o x e o y-->
+        </p>
+
+        <input type="text" @keyup.enter="alerta"> <!--O evento keyup vai chamar a função "alerta" quando o usuário clicar o "enter"-->
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                x: 0,
+                y: 0,
+                contador: 0
+            },
+            methods: {
+                add(){
+                    this.contador++
+                },
+                atualizarPosicao(e){ //Pega o X e Y do mouse
+                    this.x = e.clientX
+                    this.y = e.clientY
+                },
+                alerta(){
+                    alert('Enter!')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

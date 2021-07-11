@@ -1,0 +1,144 @@
+Baixado o tema no vscode
+    -Material icon Theme
+
+Comandos utilizados
+    -npm init -y (cria o arquivo package.json)
+    -npm i json-server ou npm i (se já tiver o json-server nas dependências do package.json)
+    -npm i -g @angular/cli
+    -ng new frontend --minimal (cria a pasta frontend)
+    -ng add @angular/material
+    -ng generate component components/template/header(gerar o component header)
+    -ng generate component components/template/footer(gerar o component footer)
+    -ng generate component components/template/nav(gerar o component nav)
+    -ng g c views/home
+    -ng g c views/product-crud
+    -ng g d directives/red
+    -ng g d directives/for
+    -ng g s components/product/product (service)
+    -ng g c components/product/product-read
+    -ng generate @angular/material:table components/product/product-read2
+    -ng g s components/template/header/header
+
+Inicializar backend e frontend
+    -npm start (no back e no front)
+
+link frontend: http://localhost:4200/
+link backend: http://localhost:3001/
+
+
+//-----------------------------SOBRE ARQUIOS---------------------
+>> "main.js" - arquivo que é a porta de entrada
+
+>> "main.js" - aponta para o "app.module.ts" (em app), que é o módulo fornecido quando sua aplicação é criada 
+
+>>"app.module.ts" - tem o bootstrap que aponta para o componente que vai ser carregado a nossa aplicação, que é o "app.component.ts"
+
+>> "index.html" - outro arquivo importante, já que essa aplicação trata-se de uma single page aplication(aplicação de única página). Ela aponta para o nosso componente raiz "app.component.ts"
+
+>> "style.css" - classes que vão ser usadas de forma global na aplicação
+
+//---------------------------SOBRE PASTAS------------------------
+>> pasta app - onde foi criado o primeiro componente
+
+>> pasta assets - Arquivos estáticos: imagens, fontes, etc
+
+>> pasta environments - local para colocar as variáveis de ambiente (de produção e de desenvolvimento)
+
+//---------------------CONCEITOS IMPORTANTES---------------------
+
+//-----------------------COMPONENTES-----------------------------
+COMPONENTE = um componente é formado por três partes: HTML, CSS, TS/JS. Não é obrigado você ter o arquivo HTML, ele pode ser inserido dentro de um template no arquivo TS. 
+
+------------------------------DIRETIVAS--------------------------
+    >> DE ATRIBUTO - Foca em alterar a aparência e o comportamento de um elemento, componente ou outra diretiva
+        @Directive({ 
+            selector: '[appRed]'
+        })
+
+        <footer appRed>Teste</footer>
+    -----------------------------------------
+
+    >> ESTRUTURAL - Altera o layout adicionando e removendo elementos da DOM. A diretira estrutural usada dentro de uma tag html tem um "*" na frente da palavra
+
+--------------------------------BINDING-------------------------
+    >>BIDDING DE ATRIBUTO "[]" - Para acessar uma variável dentro do arquivo TS no arquivo HTML você usa a propriedade binding (binding de atributo) que é declarado entre colchetes "[]" no arquivo HTML. 
+        Ex: 
+            >> (NO HTML) >> <table> [dataSource]="products" </table>
+            >> (NO COMPONENTE TS) >> products: Product[]
+
+    >>BINDING DE EVENTO "()" - Aqui se usa os parênteses. Ligar Determinado evento para um método
+        EX: 
+            >> (NO HTML) >> <button> (click) = "createProduct()" </button>
+            >> (NO COMPONENTE TS) >> createProduct(): void{ }
+
+
+-----------------------DECORATOR (@Directive)-------------------
+    >> Tem como objetivo evitar herança, para em vez de você ter uma herança você trabalhar com composição
+
+    @Injetable({ //decorator
+        providedIn: root
+    })
+    export class ProductService{
+
+    }
+
+---------------------------------//-----------------------------
+ONE WAY DATA BINDING
+    >> Acontece quando você altera um atributo no componente TS e ele altera esse atributo (onde acontece um binding de atributo) no HTML. Mas se altera no HTML não altera no TS
+        - TS >> HTML
+
+TWO WAY DATA BINDING 
+    >> Quando altera um atributo (em um binding de atributo) no HTML ele altera no TS e vice-versa
+        - HTML <<>> TS
+        - Sintaxe: [(ngModel)] = "nome"
+
+-----------------------------ROTAS-----------------------------
+
+EX: Quando o usuário que acessar os produtos ele acessa "url/produto"
+
+Quando o usuário quer acessar algum componente da página (por exemplo, a guia Home) o conteúdo que o usuário faz a requisição é renderizado dentro da tag <router-outlet> </router-outlet>. Se ele posteriormente acessa a guia de produtos o conteúdo do Home é retirado do "router" e é inserido o conteúdo de "produtos"
+
+------------------------------PIPES----------------------------
+    {{ producto.vencimento | date }} - insere a data de vencimento do produto em "date"
+
+    {{ product.price | currency: 'BRL' }}
+
+    {{ producto.vencimento | date: 'fullDate' | uppercase }} - encadeamento (chaining). Processa a data de vencimento, trasforma em uma "fullDate" para mostrar a data completa e coloca todas as letras em maiúsculo através do "uppercase"
+
+--------------------------OBSERVABLES-------------------------
+PROGRAMAÇÃO REATIVA (O Angular usa o framework ReactiveX)
+    >> No Angular o código só é chamado de forma Reativa, ou seja, precisa acontecer um evento externo para daí o código ser executado. Esse padrão economiza processamento.
+
+    import { observable } from "rxjs";
+
+    PADRÃO OBSERVER - Padrão orientado a Evento
+
+    EVENTO<<(detecta o evento)<<SUBJECT>>(notifica o evento)>>OBSERVER(realiza a ação)
+
+    Tem todos os benefícios da promise mas emgloba alguns benefícios a mais. Ele é baseado no assincronismo utilizando callbacks para chamadas de funções.
+
+--------------------------SERVICES---------------------------
+    >>São classes que têm como principal objetivo organizar e compartilhar métodos e dados entre componentes
+
+    -----------------------------------------------------
+    COMPONENTE 1: Lógica 1, Lógica X, Lógica Y, Lógica Z
+    COMPONENTE 2: Lógica 2, Lógica X, Lógica Y, Lógica W 
+    
+    SERVICE(Une os elementos dos dois componentes para evirta que sejam escritos duas vezes):  Lógica X, Lógica Y, Lógica Z, Lógica W
+    ----------------------------------------------------
+
+    Comando para incluir um SERVICE
+        - ng g s services/product
+
+    @Injetable({ //decorator
+        providedIn: "root"
+    })
+    export class ProductService{
+
+    }
+
+    >> INJEÇÃO DE DEPENDÊNCIAS - É um padrão no qual a classe recebe dependências de uma fonte externa ao invés de criar por conta própria
+
+    - ModuleInjector - @NgModule ou @Injectable - vai ter apenas uma única instância dentro do escopo do módulo ou da aplicação (se tiver usando o injetor "root")
+
+    - ElementInjector - @Directive ou @Component - cria uma instância própria dentro daquele componente de determinado service. Ou seja, ao invés de você ter uma instância única que está sendo compartilhada na sua aplicação inteira, você pode querer ter uma instância dedicada (criar uma nova instância para ser injetada naquele componente)

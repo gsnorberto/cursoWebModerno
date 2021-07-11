@@ -1,0 +1,27 @@
+Para inicializar o projeto deve startar o frontend e o backend
+    -npm start (dentro de frontend)
+    -npm start (dentro de backend)
+    Os dois deverão ser inicializados em terminais diferentes para a execução em paralelo
+
+Dentro do diretório backend foi inserido os comandos:
+    -npm init -y (cria o package.json)
+    -npm i --save json-server@0.13.0 -E (Já salva no package.json por causa do "--save")
+
+Dentro de crud digite os seguintes comandos:
+    -create-react-app frontend (instala os pacotes do react dentro da pasta "frontend")
+
+Serão utilizadas duas portas
+    -3001 para backend (json server)
+    -3000 para frontend (react)
+
+No barra de navegação você pode digitar:
+    -http://localhost:3001/users (traz todos os usuários do db.json)
+    -http://localhost:3001/users/1 (traz o primeiro usuário)
+
+Explicações sobre alguns scripts do package.json
+    -Axios -> Cliente HTTP. Como temos o nosso webservice usando json-server será necessário fazer chamadas ajax para inserir, consultar, alterar e deletar os dados no lado backend
+    -font-awesome -> Fonte/Biblioteca de ícones
+    -react-router -> navegar entre os componentes
+
+A pasta assets é destinada às fontes, imagens, scripts e folhas de estilo
+

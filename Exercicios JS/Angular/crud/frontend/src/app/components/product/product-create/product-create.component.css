@@ -1,0 +1,11 @@
+/* Por conta do encapsulamento do componente, o form só vai ser aplicado para esse componente de criação de produto */
+form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+button{
+    margin-top: 20px;
+    margin-right: 15px;
+}

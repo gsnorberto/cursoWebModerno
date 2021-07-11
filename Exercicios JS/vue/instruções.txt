@@ -1,0 +1,13 @@
+
+startar o projeto
+    -npm run exercicios
+
+
+//-----------------PROJETO DA CALCULADORA -----------------
+
+Instalado para criação do projeto
+    -npm i -g @vue/cli
+    -vue create calculator
+    -npm run serve
+
+Instalado a extensão "Vetur" para monitorar arquivos ".vue"

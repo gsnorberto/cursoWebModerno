@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conceitos Básicos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <!-- Template: Área em que o Vue vai renderizar e manipular o DOM-->
+    <div id="app">
+        <p>1) {{2+2}}</p> <!--Quem está controlando esse trecho é o vue-->
+        <p>2) {{ "teste".toUpperCase() }}</p> <!--Imprime "TESTE" em maiúsculo-->
+        <p>3) Produto: {{ nome }}, R${{preco}}, {{desconto*100}}% </p>
+        <p>4) Hora Certa: {{horaCerta()}}</p>
+        <p>5) Preço com desconto: R$ {{precoComDesconto}}</p>
+    </div>
+    <script>
+        // Vue Instance
+        new Vue({
+            el: "#app", //Elemento - Diz qual é o elemento que ele vai selecionar. Pode utilizar tanto o seletor de id quanto o de classe (embora esse não seja tão comun)
+            data:{
+                nome: 'Caneta',
+                preco: '6.89',
+                desconto: '0.15'
+            },
+            methods: {
+                horaCerta(){
+                    return new Date().toLocaleString()
+                }
+            },
+            computed: {
+                precoComDesconto(){
+                    return this.preco * (1 - this.desconto)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Diretiva Personalizada</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <input type="text" v-model="nome">
+        <div v-inverter="nome"></div>
+    </div>
+    <script>
+        Vue.directive('inverter', {
+            componentUpdated(el, binding){ //el = elemento(div do v-inverter), biding() = pega o valor do nome que foi colocado associado a diretiva "v-inverter"
+                const invertido = binding.value.split('').reverse().join('') //split gera um array com os elementos digitados, o reverse inverte o array e o join gera uma string com o valor do array invertivo
+                el.innerHTML = invertido
+            }
+        })
+        new Vue({
+             el:"#app",
+             data:{
+                nome: ''
+             }   
+        })
+    </script>
+</body>
+</html>

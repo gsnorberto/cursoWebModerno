@@ -1,0 +1,10 @@
+comandos utilizados
+    -vue add vuetify (biblioteca de componentes do VUE)
+    -vue add electron-builder (electron é um framework para construções de aplicações nativas para desktop utilizando tecnologia web para desenvolvimento)
+
+Para executar
+    -npm run electron:serve
+
+background.js é a parte correspondente ao Electron
+
+    ctrl+r = atualizar alterações dentro do programa em desenvolvimento

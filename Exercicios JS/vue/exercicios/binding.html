@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{ link }}</p>
+        <p><a href="{{link}}">Canal?</a></p> <!-- Não vai conseguir acessar o link do canal-->
+        <p> <a v-bind:href="link">Canal</a> </p>
+        <p> <a :href="link">Canal</a></p> <!-- Faz a mesma coisa que a linha acima-->
+        <p>
+            <input type="text" v-model="nome"><br> <!-- v-model é uma espécie de bind bidirecional. Ao alterar o nome do input também vai alterar o span abaixo-->
+            <span>{{nome}}</span>
+        </p>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data:{
+                nome: 'Maria',
+                link: "https://youtube.com/cod3rcursos"
+            },
+            watch: {
+                nome(novoValor){
+                    console.log(novoValor.toUpperCase()); //Imprime dentro do console o nome que está em "data" toda vez que esse nome sofrer alguma alteração
+                }
+            }
+        })
+    </script>
+</body>
+</html>
