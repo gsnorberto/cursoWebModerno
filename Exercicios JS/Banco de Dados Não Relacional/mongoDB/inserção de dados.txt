@@ -1,0 +1,219 @@
+// Inserindo dados sem ter uma collection já criada. O próprio Mongo cria a collection automaticamente.
+
+> show collections // Mostra que não há collections
+
+> db.estados.insert({nome: 'Acre', sigla: 'AC', regiao: 'Norte'})
+WriteResult({ "nInserted" : 1 }) // inserir dados na collection "estados" que ainda não existe.
+
+> show collections // A collection foi criada automaticamente
+estados
+
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+wm      0.000GB
+
+> db.estados.save({nome: 'Alagoas', sigla: 'AL', regiao: 'Nordeste', populacao: 3322000}) // foi inserido o tamanho da população que é uma coluna que até então não estava presente, mas o mongo cria automaticamente.
+WriteResult({ "nInserted" : 1 })
+
+> db.estados.find() // Mostra o conteúdo da collection "estados"
+{ "_id" : ObjectId("60eec58fa8e9d0fb00e27233"), "nome" : "Acre", "sigla" : "AC", "regiao" : "Norte" }
+{ "_id" : ObjectId("60eec61fa8e9d0fb00e27234"), "nome" : "Alagoas", "sigla" : "AL", "regiao" : "Nordeste", "populacao" : 3322000 }
+
+> db.estados.find().pretty() // Mostra o conteúdo da collection em formato json
+{
+        "_id" : ObjectId("60eec58fa8e9d0fb00e27233"),
+        "nome" : "Acre",
+        "sigla" : "AC",
+        "regiao" : "Norte"
+}
+{
+        "_id" : ObjectId("60eec61fa8e9d0fb00e27234"),
+        "nome" : "Alagoas",
+        "sigla" : "AL",
+        "regiao" : "Nordeste",
+        "populacao" : 3322000
+}
+
+// Outra maneira de inserir dados em uma 
+> db.estados.insert({ collection
+nome: "Rio de Janeiro",
+sigla: "RJ",
+regiao: "Sudeste",
+cidades: [{
+nome: "Niterói",
+area: "133.9",
+populacao: 487592
+}]
+})
+WriteResult({ "nInserted" : 1 })
+
+> db.estados.find().pretty()
+{
+        "_id" : ObjectId("60eec58fa8e9d0fb00e27233"),
+        "nome" : "Acre",
+        "sigla" : "AC",
+        "regiao" : "Norte"
+}
+{
+        "_id" : ObjectId("60eec61fa8e9d0fb00e27234"),
+        "nome" : "Alagoas",
+        "sigla" : "AL",
+        "regiao" : "Nordeste",
+        "populacao" : 3322000
+}
+{
+        "_id" : ObjectId("60eec740a8e9d0fb00e27235"),
+        "nome" : "Rio de Janeiro",
+        "sigla" : "RJ",
+        "regiao" : "Sudeste",
+        "cidades" : [
+                {
+                        "nome" : "Niterói",
+                        "area" : "133.9",
+                        "populacao" : 487592
+                }
+        ]
+}
+
+> db. //Tab
+db.adminCommand(                   db.getWriteConcern(
+db.aggregate(                      db.grantPrivilegesToRole(
+db.auth(                           db.grantRolesToRole(
+db.changeUserPassword(             db.grantRolesToUser(
+db.commandHelp(                    db.groupeval(
+db.constructor                     db.hasOwnProperty
+db.createCollection(               db.hello(
+db.createRole(                     db.help(
+db.createUser(                     db.hostInfo(
+db.createView(                     db.isMaster(
+db.currentOP(                      db.killOP(
+db.currentOp(                      db.killOp(
+db.currentOpCursor(                db.listCommands(
+db.currentOpLegacy(                db.loadServerScripts(
+db.dbEval(                         db.logout(
+db.disableFreeMonitoring(          db.printCollectionStats(
+db.dropAllRoles(                   db.printReplicationInfo(
+db.dropAllUsers(                   db.printSecondaryReplicationInfo(
+db.dropDatabase(                   db.printShardingStatus(
+db.dropRole(                       db.printSlaveReplicationInfo(
+db.dropUser(                       db.propertyIsEnumerable
+db.enableFreeMonitoring(           db.prototype
+db.estados                         db.removeUser(
+db.eval(                           db.revokePrivilegesFromRole(
+db.forceError(                     db.revokeRolesFromRole(
+db.fsyncLock(                      db.revokeRolesFromUser(
+db.fsyncUnlock(                    db.rotateCertificates(
+db.getCollection(                  db.runCommand(
+db.getCollectionInfos(             db.runCommandWithMetadata(
+db.getCollectionNames(             db.runReadCommand(
+db.getFreeMonitoringStatus(        db.serverBits(
+db.getLastError(                   db.serverBuildInfo(
+db.getLastErrorCmd(                db.serverCmdLineOpts(
+db.getLastErrorObj(                db.serverStatus(
+db.getLogComponents(               db.setLogLevel(
+db.getMongo(                       db.setProfilingLevel(
+db.getName(                        db.setSecondaryOk(
+db.getProfilingLevel(              db.setSlaveOk(
+db.getProfilingStatus(             db.setWriteConcern(
+db.getQueryOptions(                db.shutdownServer(
+db.getReplicationInfo(             db.stats(
+db.getRole(                        db.toLocaleString
+db.getRoles(                       db.toString(
+db.getSecondaryOk(                 db.tojson(
+db.getSession(                     db.unsetWriteConcern(
+db.getSiblingDB(                   db.updateRole(
+db.getSisterDB(                    db.updateUser(
+db.getSlaveOk(                     db.valueOf(
+db.getUser(                        db.version(
+db.getUsers(                       db.watch(
+> db.
+
+/////////////// DESAFIO DE INSERÇÃO //////////////////////
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+wm      0.000GB
+
+> show collections
+estados
+
+> db.estados.insert({
+... nome: "São Paulo",
+... sigla: "SP",
+... regiao: "Sudeste",
+... Cidades: [{
+... _id: ObjectId(),
+... nome: "Campinas",
+... area: 795.7,
+... prefeito: "Jonas Donizette",
+... populacao: 1081000
+... }, {
+... _id: ObjectId(),
+... nome: "Guarulhos",
+... populacao: 1325000
+... }, {
+... _id: ObjectId(),
+... nome: "Sorocaba",
+... distanciaCapital: 87,
+... populacao: 644919
+... }]
+... })
+WriteResult({ "nInserted" : 1 })
+
+> db.estados.find().pretty()
+{
+        "_id" : ObjectId("60eec58fa8e9d0fb00e27233"),
+        "nome" : "Acre",
+        "sigla" : "AC",
+        "regiao" : "Norte"
+}
+{
+        "_id" : ObjectId("60eec61fa8e9d0fb00e27234"),
+        "nome" : "Alagoas",
+        "sigla" : "AL",
+        "regiao" : "Nordeste",
+        "populacao" : 3322000
+}
+{
+        "_id" : ObjectId("60eec740a8e9d0fb00e27235"),
+        "nome" : "Rio de Janeiro",
+        "sigla" : "RJ",
+        "regiao" : "Sudeste",
+        "cidades" : [
+                {
+                        "nome" : "Niterói",
+                        "area" : "133.9",
+                        "populacao" : 487592
+                }
+        ]
+}
+{
+        "_id" : ObjectId("60eed31da8e9d0fb00e27239"),
+        "nome" : "São Paulo",
+        "sigla" : "SP",
+        "regiao" : "Sudeste",
+        "Cidades" : [
+                {
+                        "_id" : ObjectId("60eed31da8e9d0fb00e27236"),
+                        "nome" : "Campinas",
+                        "area" : 795.7,
+                        "prefeito" : "Jonas Donizette",
+                        "populacao" : 1081000
+                },
+                {
+                        "_id" : ObjectId("60eed31da8e9d0fb00e27237"),
+                        "nome" : "Guarulhos",
+                        "populacao" : 1325000
+                },
+                {
+                        "_id" : ObjectId("60eed31da8e9d0fb00e27238"),
+                        "nome" : "Sorocaba",
+                        "distanciaCapital" : 87,
+                        "populacao" : 644919
+                }
+        ]
+}
+>

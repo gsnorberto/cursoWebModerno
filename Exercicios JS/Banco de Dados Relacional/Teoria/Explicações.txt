@@ -1,0 +1,11 @@
+Se temos duas tabelas (cidade e prefeito) com relação 1 - N, devo colocar
+a chave estrangeira em cidade ou em prefeito? 
+ -Lembrando que não é possível colocar a chave de prefeito em cidade e de
+  cidade em prefeito simultaneamente. Então a análise deve ser feita com
+  base na seguinte pergunta: Fica mais fácil para a partir da tabela "ci-
+  dade" eu encontrar o prefeito, ou a partir da tabela "prefeito" encon-
+  trar a cidade?
+  Se seu sistema trabalha muito mais diretamente com a cidade e a partir
+  da cidade você encontra o prefeito, então o melhor é colocar a chave de
+  "prefeito" em "cidade". Pois a partir da tabela cidade, ao encontrar a 
+  cidade desejada, você já terá as informações do prefeito.

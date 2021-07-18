@@ -1,0 +1,53 @@
+//Traz a empresa Bradesco e dentro dele um array de estados que nesse caso possui apenas o estado de SP, que por sua vez possui um array de cidades
+//Pega todas as empresas que têm o nome "Bradesco", faz uma lookup na collection "estados". O local field da empresa é o "estadoID" e o "forenField" que é o field estrangeiro que se encontra na outra coleção é exatamente o _id que nós queremos fazer o match. Feito esse match criamos um atributo chamado estado que traz um array com todos os estados. E a "unwind", no outro exemplo, pega o objeto estado e tira de dentro do array e gera um único documento com relação entre a empresa e o estado
+
+db.empresas.aggregate([
+    {$match: {nome: "Bradesco"}},
+    {$lookup: {
+        from: "estados",
+        localField: "estadoId",
+        foreignField: "_id",
+        as: "estado"
+    }},
+]).pretty()
+
+
+//Nesse caso, o estado fica fora do array
+
+db.empresas.aggregate([
+    {$match: {nome: "Bradesco"}},
+    {$lookup: {
+        from: "estados",
+        localField: "estadoId",
+        foreignField: "_id",
+        as: "estado"
+    }},
+    {$unwind: "$estado"},
+]).pretty()
+
+
+//Traz a empresa vale que tem entre seus atributos o "cidadeId". Dentro dele existe o array de objetos que contém o estado de são paulo que por sua vez contem um array de cidades
+
+db.empresas.aggregate([
+    {$match: {nome: "Vale}}
+    {$lookup: {
+        from: "estados",
+        localField: "cidadeId",
+        foreignField: "cidade_id",
+        as: "estado"
+    }}
+]).pretty()
+
+// O "unwind estado" tira o objeto estado de dentro do array. E o "wind estado cidade". Divide o documento em vários documentos e cada documento representando uma cidade diferente
+
+db.empresas.aggregate([
+    {$match: {nome: "Vale}}
+    {$lookup: {
+        from: "estados",
+        localField: "cidadeId",
+        foreignField: "cidade_id",
+        as: "estado"
+    }},
+    {$unwind: "$estado"},
+    {$unwind: "$estado.cidades"},
+]).pretty()

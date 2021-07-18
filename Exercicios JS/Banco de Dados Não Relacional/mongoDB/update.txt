@@ -1,0 +1,70 @@
+//IMPRESSÃO DOS ESTADOS
+{
+        "_id" : ObjectId("60eec58fa8e9d0fb00e27233"),
+        "nome" : "Acre",
+        "sigla" : "AC",
+        "regiao" : "Norte"
+}
+{
+        "_id" : ObjectId("60eec61fa8e9d0fb00e27234"),
+        "nome" : "Alagoas",
+        "sigla" : "AL",
+        "regiao" : "Nordeste",
+        "populacao" : 3322000
+}
+{
+        "_id" : ObjectId("60eec740a8e9d0fb00e27235"),
+        "nome" : "Rio de Janeiro",
+        "sigla" : "RJ",
+        "regiao" : "Sudeste",
+        "cidades" : [
+                {
+                        "nome" : "Niterói",
+                        "area" : "133.9",
+                        "populacao" : 487592
+                }
+        ]
+}
+{
+        "_id" : ObjectId("60eed31da8e9d0fb00e27239"),
+        "nome" : "São Paulo",
+        "sigla" : "SP",
+        "regiao" : "Sudeste",
+        "Cidades" : [
+                {
+                        "_id" : ObjectId("60eed31da8e9d0fb00e27236"),
+                        "nome" : "Campinas",
+                        "area" : 795.7,
+                        "prefeito" : "Jonas Donizette",
+                        "populacao" : 1081000
+                },
+                {
+                        "_id" : ObjectId("60eed31da8e9d0fb00e27237"),
+                        "nome" : "Guarulhos",
+                        "populacao" : 1325000
+                },
+                {
+                        "_id" : ObjectId("60eed31da8e9d0fb00e27238"),
+                        "nome" : "Sorocaba",
+                        "distanciaCapital" : 87,
+                        "populacao" : 644919
+                }
+        ]
+}
+
+// Updates --------------------------------------
+
+//Acrescenta a atributo "populacao" ao estado de SP
+>db.estados.update( {sigla: "SP"}, {$set: {populacao: 45340000}} )
+
+//Colocar dentro do array de ciadades do estado de Alagoas uma cidade chamada "Sergipe"
+>db.estados.update( {sigla: "AL"}, {$set: {cidades: [{nome: "Sergipe"}]}} )
+
+//Colocar dentro do array de ciadades do estado de São Paulo uma cidade chamada "Santos"
+>db.estados.update(
+    {sigla: "SP"},
+    { $push: {Cidades: {nome: "Santos", populacao: 433966}} }
+)
+
+//se o atributo "populacao" existir dentro do estado, ele imprime o estado sem o id
+db.estados.find({populacao: {$exists: true}}, {_id: 0, nome: 1})

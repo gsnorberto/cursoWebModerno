@@ -1,0 +1,19 @@
+db.estados.count()
+>4
+
+db.estados.remove({sigla: "AC"})
+db.estados.count()
+>3
+
+//remove apenas um registo que tem o atributo populacao
+db.estados.remove({populacao: {$exists: true}}, 1)
+db.estados.count()
+>2
+
+//Adiciona uma população ao RJ
+db.estados.update({sigla: "RJ"}, {$set: {populacao: 16720000}})
+
+//Excluir estados que tem população menor do que 20 milhões de habitantes
+db.estados.remove({populacao: {$lt: 20000000}})
+db.estados.count()
+>1

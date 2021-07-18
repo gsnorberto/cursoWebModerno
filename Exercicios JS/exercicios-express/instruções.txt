@@ -1,0 +1,22 @@
+COMANDOS UTILIZADOS
+    - npm init -y
+    - npm i --save express
+    - npm i -g nodemon (necessário antes de instalar as depenências do package.json)
+    - npm i --save nodemon (monitora os arquivos para quando houver mudanças ele possa reiniciar a aplicação e mostrar as alterações nos arquivos)
+    - node index.js (startar sem o nodemon)
+
+STARTAR O PROJETO
+    -npm run start
+    -nodemon index.js  ou
+
+INSTALAR O PM2
+    -npm install pm2 -g (necessário antes de instalar as depenências do package.json)
+EXECUTAR O PM2
+    -npm run production
+
+SOBRE A VERSÃO DE SOFTWARES
+
+ "^4.16.3" -> O "4" representa o "major" (grande atualização do software); o "16" é o "minor" (correções menores com implementações de pequenos recursos); e o "3" representa o fix(correções de bugs, não muda nada nada no sistema)
+ O " ^ " significa que você pode alterar o minor e o fix
+ O " ~ " só permite variar na parte do fix
+ E quando não atribui nenhum dos dois ascentos acima significa que você só quer que instale a versão exata especificada. 

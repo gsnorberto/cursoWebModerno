@@ -1,0 +1,25 @@
+//Associado àao estado de São Paulo
+db.empresas.insert({
+    nome: "Bradesco",
+    estadoId: ObjectId("60eed31da8e9d0fb00e27239") 
+})
+
+//Associado à cidade de Sorocaba
+db.empresas.insert({
+    nome: "Vale",
+    cidadeId: ObjectId("60eed31da8e9d0fb00e27238")
+})
+
+
+
+> db.estados.insert({
+nome: "Rio de Janeiro",
+sigla: "RJ",
+regiao: "Sudeste",
+cidades: [{
+    _id: ObjectId(),
+    nome: "Niterói",
+    area: "133.9",
+    populacao: 487592
+}]
+})

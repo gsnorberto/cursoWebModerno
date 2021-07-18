@@ -1,0 +1,135 @@
+// Aggregation Pipeline Stages
+// Pipeline de agregação
+// O processo de consulta agregada usando mongo é uma espécie de pipe com os filtros que deseja aplicar
+------------------------------------------------------------
+//Vai pegar todos os estados e imprimir o nome desses estados e das cidades
+
+db.estados.aggregate([
+    { $project: {nome: 1, "Cidades.nome": 1, _id: 0} }
+])
+
+//Impressão
+
+{ "nome" : "Alagoas" }
+{ "nome" : "Rio de Janeiro" }
+{ "nome" : "São Paulo", "Cidades" : [ { "nome" : "Campinas" }, { "nome" : "Guarulhos" }, { "nome" : "Sorocaba" } ] }
+{ "nome" : "Acre" }
+
+-------------------------------------------------------------
+//A soma da população da cidade vai gerar um atributo chamado população
+//OBS: É necessário colocar o símbolo "$" senão será interpretado como string
+
+db.estados.aggregate([
+    { $project: {populacao: {$sum: "$Cidades.populacao"}, sigla: 1, _id: 0}},
+    { $group: {_id: null, populacaoTotal: {$sum: "$populacao"}}},
+    { $project: { _id: 0, populacaoTotal: 1}},
+])
+
+//impressão
+
+{ "sigla" : "AL", "populacao" : 0 }
+{ "sigla" : "RJ", "populacao" : 0 }
+{ "sigla" : "SP", "populacao" : 3050919 }
+{ "sigla" : "AC", "populacao" : 0 }
+
+{ "_id" : null, "populacaoTotal" : 3050919 }
+
+{ "populacaoTotal" : 3050919 }
+-------------------------------------------------------------
+
+DESAFIO: PESQUISAR DENTRO DA COLEÇÃO DE ESTADOS QUAL ESTADO TEM A CIDADE "SOROCABA", E EXTRAIR DENTRO DA CIDADE SOROCABA O ID DA CIDADE
+
+
+db.estados.aggregate([
+    { $match: {"Cidades.nome": "Sorocaba" }}, 
+    { $unwind: "$Cidades" },
+    { $match: {"Cidades.nome": "Sorocaba"}},
+    { $project: {_id: "$Cidades._id"}}
+]).pretty()
+
+//Impressão --------
+
+//match - traz o objeto estado que tem a cidade "Sorocaba"
+{
+    "_id" : ObjectId("60eed31da8e9d0fb00e27239"),
+    "nome" : "São Paulo",
+    "sigla" : "SP",
+    "regiao" : "Sudeste",
+    "Cidades" : [
+            {
+                    "_id" : ObjectId("60eed31da8e9d0fb00e27236"),
+                    "nome" : "Campinas",
+                    "area" : 795.7,
+                    "prefeito" : "Jonas Donizette",
+                    "populacao" : 1081000
+            },
+            {
+                    "_id" : ObjectId("60eed31da8e9d0fb00e27237"),
+                    "nome" : "Guarulhos",
+                    "populacao" : 1325000
+            },
+            {
+                    "_id" : ObjectId("60eed31da8e9d0fb00e27238"),
+                    "nome" : "Sorocaba",
+                    "distanciaCapital" : 87,
+                    "populacao" : 644919
+            }
+    ]
+}
+
+//unwind - separa cada objeto cidade em um documento diferente
+{
+        "_id" : ObjectId("60eed31da8e9d0fb00e27239"),
+        "nome" : "São Paulo",
+        "sigla" : "SP",
+        "regiao" : "Sudeste",
+        "Cidades" : {
+                "_id" : ObjectId("60eed31da8e9d0fb00e27236"),
+                "nome" : "Campinas",
+                "area" : 795.7,
+                "prefeito" : "Jonas Donizette",
+                "populacao" : 1081000
+        }
+}
+{
+        "_id" : ObjectId("60eed31da8e9d0fb00e27239"),
+        "nome" : "São Paulo",
+        "sigla" : "SP",
+        "regiao" : "Sudeste",
+        "Cidades" : {
+                "_id" : ObjectId("60eed31da8e9d0fb00e27237"),
+                "nome" : "Guarulhos",
+                "populacao" : 1325000
+        }
+}
+{
+        "_id" : ObjectId("60eed31da8e9d0fb00e27239"),
+        "nome" : "São Paulo",
+        "sigla" : "SP",
+        "regiao" : "Sudeste",
+        "Cidades" : {
+                "_id" : ObjectId("60eed31da8e9d0fb00e27238"),
+                "nome" : "Sorocaba",
+                "distanciaCapital" : 87,
+                "populacao" : 644919
+        }
+}
+
+//match - traz apenas o objeto(Estado) que tem a cidade de Sorocaba
+{
+        "_id" : ObjectId("60eed31da8e9d0fb00e27239"),
+        "nome" : "São Paulo",
+        "sigla" : "SP",
+        "regiao" : "Sudeste",
+        "Cidades" : {
+                "_id" : ObjectId("60eed31da8e9d0fb00e27238"),
+                "nome" : "Sorocaba",
+                "distanciaCapital" : 87,
+                "populacao" : 644919
+        }
+}
+
+//project - traz o id da cidade
+{ "_id" : ObjectId("60eed31da8e9d0fb00e27238") }
+
+--------------------------------------------------------------

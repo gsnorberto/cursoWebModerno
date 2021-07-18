@@ -1,0 +1,3 @@
+-- MySql não é Case Sensitive, ou seja, pode ele não faz diferenciação entre letras maiúsculas e minúsculas
+-- MySql é uma linguagem mais Declarativa do que imperativa
+-- Para executar comandos diretamente no VSCODE sem precisar fazer isso diretamento pelo workbench, baixe a extensão "vscode-database" -> "ctrl + shift + p" -> "pesquise mysql" -> execute "to conect my sql" -> digite a senha do banco de dados e faça login -> selecione na barra inferior do vscode a tabela desejada do DB
